@@ -9,7 +9,7 @@ const config = {
   title: "Flocon",
   tagline: "個人サーバーで使えるTRPGオンラインセッションツール（β）",
   url: "https://flocon.app",
-  baseUrl: "/",
+  baseUrl: "https://flocon.app",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/logo.png",
