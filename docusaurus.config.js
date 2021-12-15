@@ -8,7 +8,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 const config = {
   title: "Flocon",
   tagline: "個人サーバーで使えるTRPGオンラインセッションツール（β）",
-  url: "https://flocon.app/",
+  url: "https://flocon.app",
   baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
