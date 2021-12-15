@@ -17,10 +17,10 @@ sidebar_position: 1
 
 | キー                  | 値                                     |
 | --------------------- | -------------------------------------- |
-| `BUILD COMMAND`       | `yarn --cwd packages/web-server build` |
-| `OUTPUT DIRECTORY`    | `packages/web-server/.next`            |
+| `BUILD COMMAND`       | `yarn --cwd apps/web-server build` |
+| `OUTPUT DIRECTORY`    | `apps/web-server/.next`            |
 | `INSTALL COMMAND`     | 変更しない                             |
-| `DEVELOPMENT COMMAND` | `yarn --cwd packages/web-server next`  |
+| `DEVELOPMENT COMMAND` | `yarn --cwd apps/web-server next`  |
 
 ## Environmental Variables
 

@@ -55,10 +55,10 @@ $ git clone https://github.com/flocon-trpg/servers.git -b release --depth 1
 `main`ブランチは開発用ブランチであるため、開発者以外の利用は推奨されません。
 :::
 
-ダウンロードが完了したら、`servers/packages/api-server` に移動します。
+ダウンロードが完了したら、`servers/apps/api-server` に移動します。
 
 ```console
-$ cd servers/packages/api-server
+$ cd servers/apps/api-server
 ```
 
 次のコマンドを実行して、必要なnpmパッケージをインストールします。なお、これには合計600MB程度のストレージ空き容量が必要です。また、これには数分から十数分程度の時間がかかることがあります。
@@ -77,7 +77,7 @@ $ yarn workspaces focus
 $ yarn run build 
 ```
 
-`servers/packages/api-server`フォルダ内に`.env.local` ファイルを作成して、[環境変数](../vars)を参照してAPIサーバーの設定情報を入力して保存します。
+`servers/apps/api-server`フォルダ内に`.env.local` ファイルを作成して、[環境変数](../vars)を参照してAPIサーバーの設定情報を入力して保存します。
 
 手動でデータベースのマイグレーションを行う場合は、次のコマンドを実行します（自動マイグレーションを有効化している場合はこの作業は必要ありません）。
 

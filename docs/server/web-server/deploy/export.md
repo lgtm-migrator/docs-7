@@ -40,7 +40,7 @@ $ git clone https://github.com/flocon-trpg/servers.git -b release --depth 1
 
 ダウンロードされた `server` フォルダはリネームしたり別の場所に移動しても構いません。
 
-`server/packages/web-server` フォルダ内で `.env.local` ファイルを作成します。
+`server/apps/web-server` フォルダ内で `.env.local` ファイルを作成します。
 
 :::info
 Windowsの場合は、設定でファイルの拡張子を表示するようにしてください。
@@ -56,7 +56,7 @@ NEXT_PUBLIC_AUTH_PROVIDERS=email,google
 NEXT_PUBLIC_FIREBASE_STORAGE_ENABLED=true
 ```
 
-`server/packages/web-server` フォルダ内で次のコマンドを実行して、必要なパッケージをインストールします。なお、これには合計1GB程度の空きストレージ容量が必要です。また、これには数分から十数分程度の時間がかかることがあります。
+`server/apps/web-server` フォルダ内で次のコマンドを実行して、必要なパッケージをインストールします。なお、これには合計1GB程度の空きストレージ容量が必要です。また、これには数分から十数分程度の時間がかかることがあります。
 
 ```bash
 $ yarn workspaces focus
