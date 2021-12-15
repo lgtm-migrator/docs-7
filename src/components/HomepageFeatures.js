@@ -32,7 +32,8 @@ const FeatureList = [
     Svg: require("../../static/img/square-svgrepo-com.svg").default,
     description: (
       <>
-        Heroku、Google Cloud、Vercel、Netlify、オンプレミスなど様々な方法でデプロイが可能です。
+        Heroku、Google
+        Cloud、Vercel、Netlify、オンプレミスなど様々な方法でデプロイが可能です。
       </>
     ),
   },
@@ -64,6 +65,10 @@ export default function HomepageFeatures() {
           {FeatureList.map((props, idx) => (
             <Feature key={idx} {...props} />
           ))}
+        </div>
+        <div style={{ paddingTop: 48 }}>
+          <h2>スクリーンショット</h2>
+          <img src="/img/sample_room.png" />
         </div>
       </div>
     </section>
