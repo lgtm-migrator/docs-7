@@ -68,7 +68,7 @@ export default function HomepageFeatures() {
         </div>
         <div style={{ paddingTop: 48 }}>
           <h2>スクリーンショット</h2>
-          <img src="/img/sample_room.png" />
+          <img src="/img/sample_room.min.webp" />
         </div>
       </div>
     </section>
