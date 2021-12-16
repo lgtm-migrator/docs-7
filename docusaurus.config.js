@@ -95,6 +95,10 @@ const config = {
                 label: "GitHub（ドキュメント）",
                 href: "https://github.com/flocon-trpg/docs",
               },
+              {
+                label: "Discord",
+                href: "https://discord.gg/TYubGvYuQu"
+              }
             ],
           },
         ],
