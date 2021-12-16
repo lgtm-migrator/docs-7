@@ -38,7 +38,7 @@ APIサーバーのソースコードをダウンロードします。様々な�
 $ git clone https://github.com/flocon-trpg/servers.git -b release --depth 1
 ```
 
-ダウンロードされた `server` フォルダはリネームしたり別の場所に移動しても構いません。
+ダウンロードされた `server` フォルダはリネームしたり別の場所に移動しても構いません。ただし、パスに全角文字が含まれているとエラーが出ることがあるため、全角文字を含まないようにすることを推奨します。
 
 `server/apps/web-server` フォルダ内で `.env.local` ファイルを作成します。
 
@@ -72,6 +72,18 @@ $ yarn workspaces focus
 $ yarn run build
 $ yarn run export
 ```
+
+:::info
+`yarn run build`を実行したときに`MODULE_NOT_FOUND`というエラーが出る場合は、パスに全角文字などが含まれていないかどうか確認してください。
+:::
+
+:::info
+パスに全角文字が含まれる状態で`yarn workspaces focus`などを実行していた場合、`yarn run build`を実行すると`The command failed for workspaces that are depended upon by other workspaces; can't satisfy the dependency graph`というエラーが出て失敗することがあります。この場合は、パスに全角文字を含まないようにしてから`servers`フォルダにある`node_modules`フォルダを削除して、`yarn workspaces focus`を実行するところからやり直してください。
+:::
+
+:::note
+`yarn run build`を実行すると`ESLint must be installed in order to run during builds: yarn add --dev eslint`というエラーが出ますが、無視して構いません。
+:::
 
 最終的に`out`フォルダが生成されます。この中にはHTMLファイル、画像ファイル、JavaScriptファイルなどといった静的ファイルが入っています。これをホスティングサービスなどにアップロードすることでWebサーバーの設置が完了します。
 
