@@ -15,7 +15,7 @@ API サーバーから送信される値に`Access-Control-Allow-Origin`ヘッ�
 keyName='ACCESS_CONTROL_ALLOW_ORIGIN'
 value='https://example.com' />
 
-## AUTO_MIGRATION（省略可）
+## AUTO_MIGRATION（省略可）{#AUTO_MIGRATION}
 
 `true`にすることで、データベースのマイグレーションが自動的に行われます。
 
@@ -65,7 +65,7 @@ value='./uploader' />
 
 1 ユーザーが API サーバーにアップロードできる合計ファイルサイズの上限を設定できます。単位はバイトです。値がない場合は上限は設けられません。
 
-## ENTRY_PASSWORD（必須）
+## ENTRY_PASSWORD（必須）{#ENTRY_PASSWORD}
 
 エントリーパスワード（サイトを利用するために必要なパスワード）を設定できます。JSON フォーマットで入力する必要があります。
 
@@ -97,7 +97,7 @@ value='{"type":"bcrypt","value":"$2b$10$ABC.defgh.igklmnopq/qwertyuiopasdfghjklz
 valueOfDotEnv='{"type":"bcrypt","value":"\$2b\$10\$ABC.defgh.igklmnopq/qwertyuiopasdfghjklzxcvbnm0123"}'
 descriptionOfDotEnv={<><code>$</code>はこの例のようにエスケープする必要があります。</>} />
 
-## FIREBASE_ADMIN_SECRET（特定の状況を除いて必須）
+## FIREBASE_ADMIN_SECRET（特定の状況を除いて必須）{#FIREBASE_ADMIN_SECRET}
 
 Firebase 管理ページから生成した Firebase Admin SDK の秘密鍵の値を設定できます。Google Compute Engine、Google App Engine など**以外**で API サーバーを動かす場合は、この設定は必須です。
 
@@ -177,7 +177,7 @@ value='production' />
 Heroku にデプロイする場合は設定しないでください。
 :::
 
-## POSTGRESQL（省略可）
+## POSTGRESQL（省略可）{#POSTGRESQL}
 
 PostgreSQL の設定を行うことができます。
 

@@ -101,13 +101,13 @@ API サーバーのデータベースには PostgreSQL と SQLite が使用で�
 
 ![heroku2.png](/img/docs/heroku/heroku2.png)
 
-次のように値を設定します。
+次のように値を設定します。設定できる値について詳しく知りたい方は[環境変数](../vars.md)のページを参照してください。
 
-| KEY                           | VALUE        | 必要性 | 備考                                                                       |
-| ----------------------------- | ------------ | ------ | -------------------------------------------------------------------------- |
-| `AUTO_MIGRATION`              | `true`       | 必須   |
-| `ENTRY_PASSWORD`              |              | 任意   |
-| `FIREBASE_ADMIN_SECRET`       |              | 必須   |
-| `NEXT_PUBLIC_FIREBASE_CONFIG` |              | 必須   |
-| `NODE_ENV`                    | `production` | 任意   | `production`にすることで、デバッグモードではなく本番用モードで動作します。 |
-| `POSTGRESQL`                  |              | 必須   |                                                                            |
+| KEY                           | VALUE                                                  | 必要性 | 備考                                                                       |
+| ----------------------------- | ------------------------------------------------------ | ------ | -------------------------------------------------------------------------- |
+| `AUTO_MIGRATION`              | `true`                                                 | 必須   |
+| `ENTRY_PASSWORD`              | [こちらを参照](../vars.md#ENTRY_PASSWORD)              | 任意   |
+| `FIREBASE_ADMIN_SECRET`       | [こちらを参照](../vars.md#ADMIN_SECRET)                | 必須   |
+| `NEXT_PUBLIC_FIREBASE_CONFIG` | [こちらを参照](../vars.md#NEXT_PUBLIC_FIREBASE_CONFIG) | 必須   |
+| `NODE_ENV`                    | `production`                                           | 任意   | `production`にすることで、デバッグモードではなく本番用モードで動作します。 |
+| `POSTGRESQL`                  | [こちらを参照](../vars.md#POSTGRESQL)                  | 必須   |                                                                            |
