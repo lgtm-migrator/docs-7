@@ -40,7 +40,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       colorMode: {
-        defaultMode: 'dark'
+        defaultMode: "dark",
       },
       navbar: {
         title: "Flocon",
@@ -71,21 +71,21 @@ const config = {
       footer: {
         style: "dark",
         links: [
-          // {
-          //   title: "Community",
-          //   items: [
-          //     {
-          //       label: "Discord",
-          //       href: "https://discordapp.com/invite/docusaurus",
-          //     },
-          //     {
-          //       label: "Twitter",
-          //       href: "https://twitter.com/docusaurus",
-          //     },
-          //   ],
-          // },
           {
-            title: "More",
+            title: "コミュニティ",
+            items: [
+              {
+                label: "Discord",
+                href: "https://discord.gg/cy3vhmU6Tx",
+              },
+              {
+                label: "Twitter",
+                href: "https://twitter.com/flocon_trpg",
+              },
+            ],
+          },
+          {
+            title: "その他",
             items: [
               {
                 label: "GitHub",
@@ -95,10 +95,6 @@ const config = {
                 label: "GitHub（ドキュメント）",
                 href: "https://github.com/flocon-trpg/docs",
               },
-              {
-                label: "Discord",
-                href: "https://discord.gg/cy3vhmU6Tx"
-              }
             ],
           },
         ],
