@@ -60,6 +60,11 @@ const config = {
             label: "ダウンロード",
             position: "left",
           },
+          {
+            href: "https://sandbox-server.flocon.app",
+            label: "試しに使ってみる",
+            position: "left",
+          },
           // { to: "/blog", label: "Blog", position: "left" },
           {
             href: "https://github.com/flocon-trpg/servers",
