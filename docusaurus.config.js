@@ -97,7 +97,7 @@ const config = {
               },
               {
                 label: "Discord",
-                href: "https://discord.gg/TYubGvYuQu"
+                href: "https://discord.gg/cy3vhmU6Tx"
               }
             ],
           },
