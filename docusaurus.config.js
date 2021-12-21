@@ -7,7 +7,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Flocon（フロコン）",
-  tagline: "個人サーバーで使えるTRPGオンラインセッションツール（β）",
+  tagline: "自鯖で使えるTRPGオンラインセッションツール",
   url: "https://flocon.app",
   baseUrl: "/",
   onBrokenLinks: "throw",
