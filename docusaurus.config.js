@@ -6,7 +6,8 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "Flocon（フロコン）- 自鯖に設置できる新世代のTRPGオンラインセッションツール",
+  title:
+    "Flocon（フロコン）- 自鯖に設置できる新世代のTRPGオンラインセッションツール",
   url: "https://flocon.app",
   baseUrl: "/",
   onBrokenLinks: "throw",
@@ -38,6 +39,7 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      image: 'img/sample_room.min.webp',
       colorMode: {
         defaultMode: "dark",
       },
