@@ -4,7 +4,7 @@ import styles from "./HomepageFeatures.module.css";
 
 const FeatureList = [
   {
-    title: "個人サーバー上でTRPGオンラインセッション",
+    title: "自鯖でTRPGオンラインセッション",
     Svg: require("../../static/img/server-svgrepo-com.svg").default,
     description: (
       <>
@@ -13,27 +13,22 @@ const FeatureList = [
     ),
   },
   {
-    title: "無料で利用、無料でサーバー設置",
+    title: "無料で利用、無料でサーバー運用",
     Svg: require("../../static/img/money-svgrepo-com.svg").default,
     description: (
       <>
-        Floconのアプリケーションコードは、
-        <a href="https://github.com/flocon-trpg/servers/blob/main/LICENSE">
-          MIT License
-        </a>
-        のもとで自由にご利用いただけます。サーバーも、
+        サーバーは、大きな負荷がかからない用途であれば
         <a href="https://heroku.com">Heroku</a>
-        などを利用すれば無料で設置できます。
+        などを利用することで無料で設置、運用できます。自鯖専用のアップローダーも無料でセットアップ可能です。
       </>
     ),
   },
   {
-    title: "柔軟なデプロイ方法",
+    title: "多機能なセッションツール",
     Svg: require("../../static/img/square-svgrepo-com.svg").default,
     description: (
       <>
-        Heroku、Google
-        Cloud、Vercel、Netlify、オンプレミスなど様々な方法でデプロイが可能です。
+        FloconのTRPGセッションツールは、基本的なものから発展的なものまで、様々な機能に対応しています。
       </>
     ),
   },
@@ -67,6 +62,52 @@ export default function HomepageFeatures() {
           ))}
         </div>
         <div style={{ paddingTop: 48 }}>
+          <h2>多彩なサーバーの設置方法</h2>
+          用途に応じた様々な設置方法に対応しています。
+          <ul className="checkmark" style={{ marginTop: 8 }}>
+            <li>HerokuとNetlifyを用いて、無料、お手軽、安全にサーバーを運用</li>
+            <li>
+              Amazon Web Services、Google
+              Cloudなどの様々なクラウドサービスで運用
+            </li>
+            <li>オンプレミスサーバーで運用</li>
+          </ul>
+        </div>
+        <div style={{ paddingTop: 48 }}>
+          <h2>多機能なTRPGオンラインセッションツール</h2>
+          Floconのセッションツールとしての機能を紹介します。
+          <ul className="checkmark" style={{ marginTop: 8 }}>
+            <li>キャラクター</li>
+            <li>キャラクターのパラメーターを自由に作成</li>
+            <li>
+              ボード（他のツールでいうところの「マップ」や「テーブル」に相当します）
+            </li>
+            <li>キャラクターコマ、立ち絵、ダイスコマ</li>
+            <li>
+              他のユーザーから隠したいデータ（キャラクター、ダイスコマのダイス、ボード全体など）を隠す
+            </li>
+            <li>セッションの進行に用いるメインチャンネルと、観戦者も利用できる雑談チャンネルの2種類からメッセージを投稿</li>
+            <li>複数人にも送信可能な秘話</li>
+            <li>BCDiceによるダイスロール、シークレットダイス</li>
+            <li>キャラクターやメッセージをタブで自由に分類</li>
+            <li>新規メッセージやユーザーの入退室をブラウザ画面右下に通知</li>
+            <li>BGM、SEを流す</li>
+            <li>他のユーザーと共有可能な、部屋メモとキャラクターメモ</li>
+            <li>チャットパレット</li>
+            <li>コマンド</li>
+            <li>
+              ログ出力。キャラクター画像付きのリッチなログと、テキストをベースとしたシンプルなログの2種類の出力方法に対応
+            </li>
+            <li>キャラクターとボードのインポート・エクスポート</li>
+            <li>
+              アップローダー。様々な用途に対応できるように、Heroku
+              Freeプランでも無料で使用可能なFirebase
+              Storageと、より多機能な内蔵アップローダーの2種類から使用可能
+            </li>
+            <li>外部URLから画像や音声などのデータの読み込み</li>
+          </ul>
+        </div>
+        <div style={{ paddingTop: 48 }}>
           <h2>スクリーンショット</h2>
           <img src="/img/sample_room.min.webp" />
         </div>
@@ -81,7 +122,7 @@ export default function HomepageFeatures() {
             >
               公式お試しサーバー
             </a>
-            も用意しています。ぜひご利用ください。
+            も用意しています。よろしければぜひご活用ください。
           </div>
         </div>
       </div>

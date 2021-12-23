@@ -12,10 +12,10 @@ function HomepageHeader() {
     <header className={clsx("hero hero--primary", styles.heroBanner)}>
       <div className="container">
         <h1 className="hero__title" style={{ color: "white" }}>
-          {siteConfig.title}
+          Flocon（フロコン）
         </h1>
         <p className="hero__subtitle" style={{ color: "white" }}>
-          {siteConfig.tagline}
+          自鯖に設置できる新世代のTRPGオンラインセッションツール
         </p>
         <div className={styles.buttons}>
           <Link
@@ -23,6 +23,15 @@ function HomepageHeader() {
             to="/docs/intro"
           >
             ドキュメントを開く
+          </Link>
+          <Link
+            style={{ marginLeft: 12 }}
+            className="button button--secondary button--lg"
+            href="https://sandbox-server.flocon.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            公式お試しサーバーを開く
           </Link>
         </div>
       </div>
@@ -33,10 +42,7 @@ function HomepageHeader() {
 export default function Home() {
   const { siteConfig } = useDocusaurusContext();
   return (
-    <Layout
-      title={siteConfig.title}
-      description={siteConfig.tagline}
-    >
+    <Layout title="トップページ" description={siteConfig.tagline}>
       <HomepageHeader />
       <main>
         <HomepageFeatures />

@@ -6,8 +6,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "Flocon（フロコン）",
-  tagline: "自鯖で使えるTRPGオンラインセッションツール",
+  title: "Flocon（フロコン）- 自鯖に設置できる新世代のTRPGオンラインセッションツール",
   url: "https://flocon.app",
   baseUrl: "/",
   onBrokenLinks: "throw",
@@ -56,13 +55,13 @@ const config = {
             label: "ドキュメント",
           },
           {
-            href: "https://github.com/flocon-trpg/servers",
-            label: "ダウンロード",
+            href: "https://sandbox-server.flocon.app",
+            label: "公式お試しサーバー",
             position: "left",
           },
           {
-            href: "https://sandbox-server.flocon.app",
-            label: "試しに使ってみる",
+            href: "https://github.com/flocon-trpg/servers/releases",
+            label: "ダウンロード",
             position: "left",
           },
           // { to: "/blog", label: "Blog", position: "left" },
