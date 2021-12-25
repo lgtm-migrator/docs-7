@@ -5,6 +5,8 @@ sidebar_position: 4
 
 import { WebVarExample as Example } from '../../../src/components/WebVarExample';
 
+このページの代わりに[web-server設定ツール](https://tools.flocon.app/web-server)を用いることもできます。
+
 ## NEXT_PUBLIC_API_HTTP（必須）{#NEXT_PUBLIC_API_HTTP}
 
 APIサーバーのHTTPのアドレスを入力します。通常は `https://` もしくは `http://` で始まります。
@@ -29,7 +31,7 @@ value='wss://example.com' />
 
 Firebase Authenticationで有効化したログイン方法を入力します。複数ある場合は`,`で区切ります。
 
-現時点で利用可能な値は、`email`、`google`、`facebook`、`github`、`twitter`、`phone` です。
+現時点で利用可能な値は、`anonymous`、`email`、`google`、`facebook`、`github`、`twitter`、`phone` です。
 
 ### 入力例
 
@@ -47,7 +49,7 @@ value='email,google' />
 
 <Example
 keyName='NEXT_PUBLIC_FIREBASE_CONFIG'
-value='{"apiKey":"****************","authDomain":"***-*****.firebaseapp.com","databaseURL":"https://***-*****.firebaseio.com","projectId":"***-*****","storageBucket":"***-*****.appspot.com","messagingSenderId":"**********","appId":"****************"}' />
+value='{"apiKey":"***","authDomain":"***.firebaseapp.com","databaseURL":"https://***.firebaseio.com","projectId":"***","storageBucket":"***.appspot.com","messagingSenderId":"***","appId":"***"}' />
 
 ## NEXT_PUBLIC_FIREBASE_STORAGE_ENABLED（省略可）
 

@@ -57,6 +57,12 @@ const config = {
             label: "ドキュメント",
           },
           {
+            type: "doc",
+            docId: "faq",
+            position: "left",
+            label: "Q&A",
+          },
+          {
             href: "https://sandbox-server.flocon.app",
             label: "公式お試しサーバー",
             position: "left",

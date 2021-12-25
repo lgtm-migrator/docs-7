@@ -1,13 +1,11 @@
 ---
-title: "静的ファイル（Netlify）"
-sidebar_position: 2
+title: "静的ファイルをビルドする"
+sidebar_position: 3
 ---
 
-# 静的ファイルを用いたデプロイ方法
+`web-server-static.zip`に相当するファイルをビルドする方法についての解説です。この解説の方法を用いることで、静的ファイルに環境変数などのデータを静的ファイルに埋め込むなどといった機能を使うことができますが、基本的には`web-server-static.zip`を使用するほうが簡単であるためそちらを推奨します。
 
-大まかな流れとしては、ソースコードから静的ファイルを生成して、それをホスティングサイトにアップロードする形になります。
-
-## 静的ファイルを生成する
+## ビルド方法
 
 Node.jsのv16もしくはv14がインストールされていない場合はインストールしてください。npmもあわせてインストールしてください（通常はNode.jsと一緒にインストールされます）。
 
@@ -43,13 +41,13 @@ $ git clone https://github.com/flocon-trpg/servers.git -b release --depth 1
 `server/apps/web-server` フォルダ内で `.env.local` ファイルを作成します。
 
 :::info
-Windowsの場合は、設定でファイルの拡張子を表示するようにしてください。
+`.env.local`ではなく環境変数や`env.txt`を用いて設定することも可能です。これらを併用して別々に設定することも可能です。これらの違いは、`.env.local`と環境変数で設定した内容（Next.jsの機能に従うため、`NEXT_PUBLIC_`から始まらないものは無視されます）は`yarn run export`を実行したときに生成される静的ファイルのJavaScriptファイルなどに埋め込まれますが、`env.txt`の内容は埋め込まれないという点です。
 :::
 
-作成した `.env.local` ファイルをメモ帳で開き、[環境変数](/docs/server/web-server/vars)を参考にして変数を書き込んで保存します。あくまで一例としてですが、`.env.local` ファイルは最終的に下のようになります。
+作成した `.env.local` ファイルをメモ帳で開き、[web-server設定ツール](https://tools.flocon.app/web-server)を利用して変数を書き込んで保存します。あくまで一例としてですが、`.env.local` ファイルは最終的に下のようになります。
 
 ```env
-NEXT_PUBLIC_FIREBASE_CONFIG='{"apiKey":"****************","authDomain":"***-*****.firebaseapp.com","databaseURL":"https://***-*****.firebaseio.com","projectId":"***-*****","storageBucket":"***-*****.appspot.com","messagingSenderId":"**********","appId":"****************"}'
+NEXT_PUBLIC_FIREBASE_CONFIG='{"apiKey":"***","authDomain":"***.firebaseapp.com","databaseURL":"https://***.firebaseio.com","projectId":"***","storageBucket":"***.appspot.com","messagingSenderId":"***","appId":"***"}'
 NEXT_PUBLIC_API_HTTP=https://example.com
 NEXT_PUBLIC_API_WS=wss://example.com
 NEXT_PUBLIC_AUTH_PROVIDERS=email,google
@@ -66,10 +64,9 @@ $ yarn workspaces focus
 `yarn workspaces focus`の代わりに`yarn install`などを実行しても構いません。ですが`yarn install`ではAPIサーバーに必要なパッケージもインストールしようとするため、環境によっては [bcrypt](https://www.npmjs.com/package/bcrypt) パッケージなどのインストールに失敗します。そのため`yarn workspaces focus`のほうが無難だと思われます。
 :::
 
-次の2つのコマンドを順に実行して、静的ファイルを作成します。これには数分から十数分程度の時間がかかることがあります。
+次のコマンドを実行して、静的ファイルを作成します。これには数分から十数分程度の時間がかかることがあります。
 
 ```bash
-$ yarn run build
 $ yarn run export
 ```
 
@@ -88,15 +85,7 @@ $ yarn run export
 最終的に`out`フォルダが生成されます。この中にはHTMLファイル、画像ファイル、JavaScriptファイルなどといった静的ファイルが入っています。これをホスティングサービスなどにアップロードすることでWebサーバーの設置が完了します。
 
 :::caution
-生成された`out`フォルダと`.next`フォルダ内のファイルには、先ほど作成した `.env.local`ファイルの情報が埋め込まれています。そのため、これらのファイルを第三者と共有することは推奨されません。
+生成された`out`フォルダと`.next`フォルダ内のファイルには、一部の環境変数や `.env.local`ファイルのデータが埋め込まれています。そのため、これらのファイルを第三者と共有することは推奨されません。
 :::
 
-静的ファイルをアップロードするホスティングサービスはNetlifyやFirebase Hostingなど様々なものがありますが、ここではドラッグ&ドロップでデプロイできるNetlifyを用いる方法を解説します。
-
-## Netlifyにデプロイする
-
-[Netlify](https://www.netlify.com/)にアクセスして、アカウントを作成します。
-
-作成したら、下にある`Drag and drop...`に`out`フォルダをドラッグ&ドロップします。
-
-しばらくするとサイトが作成されるので、アクセスしてみて確認します。
+静的ファイルをアップロードするホスティングサービスはNetlifyやFirebase Hostingなど様々なものがありますので、いずれかを利用してデプロイしてください。

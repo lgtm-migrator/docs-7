@@ -22,16 +22,23 @@ function HomepageHeader() {
             className="button button--secondary button--lg"
             to="/docs/intro"
           >
-            ドキュメントを開く
+            ドキュメント
           </Link>
           <Link
-            style={{ marginLeft: 12 }}
+            style={{ marginLeft: 24 }}
+            className="button button--secondary button--lg"
+            to="/docs/faq"
+          >
+            {'Q&A'}
+          </Link>
+          <Link
+            style={{ marginLeft: 24 }}
             className="button button--secondary button--lg"
             href="https://sandbox-server.flocon.app/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            公式お試しサーバーを開く
+            公式お試しサーバーに移動
           </Link>
         </div>
       </div>

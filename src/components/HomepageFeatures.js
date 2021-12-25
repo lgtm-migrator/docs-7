@@ -77,7 +77,9 @@ export default function HomepageFeatures() {
           <h2>多機能なTRPGオンラインセッションツール</h2>
           Floconのセッションツールとしての機能を紹介します。
           <ul className="checkmark" style={{ marginTop: 8 }}>
-            <li>キャラクター</li>
+            <li>サイト全体に簡易的なパスワードをかける</li>
+            <li>部屋にパスワードをかける</li>
+            <li>部屋の参加者、観戦者の分別</li>
             <li>キャラクターのパラメーターを自由に作成</li>
             <li>
               ボード（他のツールでいうところの「マップ」や「テーブル」に相当します）

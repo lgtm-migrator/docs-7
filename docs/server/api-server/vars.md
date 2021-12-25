@@ -1,6 +1,6 @@
 ---
 title: "環境変数"
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 import { ApiVarExample as Example } from '../../../src/components/ApiVarExample';
@@ -101,6 +101,8 @@ descriptionOfDotEnv={<><code>$</code>はこの例のようにエスケープす�
 
 Firebase 管理ページから生成した Firebase Admin SDK の秘密鍵の値を設定できます。Google Compute Engine、Google App Engine など**以外**で API サーバーを動かす場合は、この設定は必須です。
 
+Firebase Admin SDKの秘密鍵を生成する方法は、[こちらのページ](./firebase_admin)を参照してください。
+
 :::info
 Firebase と同じサービスアカウントで管理している Google Compute Engine、Google App Engine などで API サーバーを動かす場合は、この値を設定しないことを推奨します。この値が設定されていない場合、API サーバーは[Firebase Admin SDK をパラメーターなしで初期化する](https://firebase.google.com/docs/admin/setup#initialize-without-parameters)ためです。
 :::
@@ -112,16 +114,6 @@ keyName='FIREBASE_ADMIN_SECRET'
 value='{"private_key":"-----BEGIN PRIVATE KEY-----\n********************\n-----END PRIVATE KEY-----\n","client_email":"************.iam.gserviceaccount.com"' />
 
 `*`の部分を適切な文字列に置き換えてください。なお、実際の`private_key`の値はこの例に比べて非常に長いです。
-
-### Firebase Admin SDK の秘密鍵ファイルの取得
-
-Firebase Admin SDK の秘密鍵ファイルは次の方法で取得できます。
-
-Firebase の `プロジェクトの設定`（Firebase 管理ページ左上にある歯車アイコンから開けます） の `サービスアカウント` タブの下の方にある`新しい秘密鍵の生成`ボタンをクリックします。表示される説明にもあるとおり、秘密鍵の情報は機密扱いで管理する必要があります。
-
-![1.png](/img/docs/vars/firebase_admin/1.png)
-
-`キーを生成`ボタンを押すと JSON ファイルがダウンロードされます。これを開き、`private_key`と`client_email`の値を参照して、入力例を参考にして`FIREBASE_ADMIN_SECRET`を設定してください。JSON ファイル内のその他の値は`FIREBASE_ADMIN_SECRET`には必要ありません。
 
 ## NEXT_PUBLIC_FIREBASE_CONFIG（必須）{#NEXT_PUBLIC_FIREBASE_CONFIG}
 
@@ -135,7 +127,7 @@ Firebase の `プロジェクトの設定`（Firebase 管理ページ左上に�
 
 <Example
 keyName='NEXT_PUBLIC_FIREBASE_CONFIG'
-value='{"apiKey":"****************","authDomain":"***-*****.firebaseapp.com","databaseURL":"https://***-*****.firebaseio.com","projectId":"***-*****","storageBucket":"***-*****.appspot.com","messagingSenderId":"**********","appId":"****************"}' />
+value='{"apiKey":"****************","authDomain":"********.firebaseapp.com","databaseURL":"https://********.firebaseio.com","projectId":"********","storageBucket":"********.appspot.com","messagingSenderId":"**********","appId":"****************"}' />
 
 `*`の部分を適切な文字列に置き換えてください。
 

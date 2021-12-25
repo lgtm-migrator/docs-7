@@ -3,21 +3,53 @@ title: "Heroku"
 sidebar_position: 2
 ---
 
-（TODO: 書きかけ）
+このページでは Heroku に API サーバーを設置する方法を説明します。
 
-# Heroku にデプロイする方法
+## Heroku アカウントを用意する
 
-このページでは、Heroku 上で API サーバーを動かす方法を解説します。
+もし Heroku アカウントを持っていない場合は、[Heroku](https://jp.heroku.com)でアカウントを作成してください。
 
-## Heroku にコードを push する
+## API サーバーを設置する方法
 
-まず最初に[Heroku](https://jp.heroku.com/)のアカウントを用意して、Heroku CLI のインストールをしてください。
+[リリース一覧](https://github.com/flocon-trpg/servers/releases)から、設置したい API サーバーのバージョンを探し、`Deploy to Heroku`というボタンをクリックします。基本的には Pre-release が付いているもの**以外**の中から最新のバージョンを選べば大丈夫だと思います。
 
-:::note
-この解説では Heroku に `git push` してデプロイする方法を用いていますが、GitHub 連携などといった他の方法を利用しても構いません。
+`Deploy to Heroku`ボタンをクリックすると、下のような画面が表示されると思います。
+
+![deploy_to_heroku.png](/img/docs/heroku/deploy_to_heroku.png)
+
+設定する場所は、`App name`と`ENTRY_PASSWORD`と`FIREBASE_ADMIN_SECRET`の 3 つです。
+
+`App name`には自分がわかりやすい名前を入力します。
+
+`Choose a region`は、日本からの利用が多そうであれば United States のままで問題ありません。
+
+必要であれば、`ENTRY_PASSWORD`を変更してください。
+
+`FIREBASE_ADMIN_SECRET`には、Firebase Admin SDK の秘密鍵ファイルの中身をそのまま入力してください。Firebase Admin SDK の秘密鍵ファイルの生成方法は、[こちらのページ](../firebase_admin)を参照してください。
+
+Config Vars の内容は後からでも変更できます。
+
+最後に`Deploy app`ボタンを押すことで API サーバーのセットアップが自動的に始まります。完了するまで数分程度かかります。
+
+完了したら、画面下部に表示される`View`ボタンを押してみましょう。「API サーバーは稼働しています😊」という画面が表示されていれば成功です🎉。次にWebサーバーの設置を行ってください。
+
+## Herokuに課金する際の注意点
+
+Herokuは無料で利用できますが、課金することでAPIサーバーの性能をアップグレードすることも可能です。
+
+`Deploy to Heroku`ボタンからAPIサーバーを設置した場合、Heroku PostgresのHobby Devプラン（無料プラン）が合わせて自動的に設定されます。Heroku PostgresはHeroku公式のアドオンですが、Herokuへの課金とHeroku Postgresへの課金は別体系ですので注意してください。もし課金する場合はどこにボトルネックがあるかを確認してどのように課金するかを事前に検討してください。
+
+## API サーバーをバージョンアップする方法
+
+設置済みの API サーバーのバージョンアップは手動で行う必要があります。ここでは git を用いたアップデート方法を説明します。
+
+:::caution
+もし削除されてほしくない部屋データなどがある場合は、事前に Heroku Postgres のバックアップ機能を用いて、データベースのバックアップを取っておくことを推奨します。
 :::
 
-次のコマンドを実行して、API サーバーを heroku にデプロイするファイルの雛形を入手します。
+まず [Heroku CLI と git をインストール](https://devcenter.heroku.com/ja/articles/heroku-cli)します。
+
+次のコマンドを実行して、`Deploy to Heroku`ボタンのソースコードを入手します。
 
 ```
 $ git clone https://github.com/flocon-trpg/heroku-api-getting-started.git
@@ -29,85 +61,24 @@ $ git clone https://github.com/flocon-trpg/heroku-api-getting-started.git
 
 ダウンロードされた `heroku-api-getting-started` フォルダはリネームしたり別の場所に移動しても構いません。
 
-`heroku-api-getting-started` フォルダ内にある `api-server.Dockerfile` をテキストエディタで開き、`<VERSION>` の部分を利用したい API サーバーのバージョン名に置き換えます。
+`heroku-api-getting-started` フォルダ内にある `api-server.Dockerfile` をテキストエディタで開き、`ARG branch=` で始まる行を探して、バージョンアップさせたいバージョンに置き換えます。
 
-:::note
-この解説の方法を用いると、API サーバーのデプロイには[Docker Hub 上にある Flocon の公式イメージ](https://hub.docker.com/repository/docker/kizahasi/flocon-api)が使われます。代わりに独自に作成したイメージを利用しても構いません。公式イメージのビルドに使われている Dockerfile は <https://github.com/flocon-trpg/servers/tree/main/docker> にあります。
-:::
-
-`heroku-api-getting-started` フォルダで、下のコマンドを実行して変更をコミットします。`update api-server.Dockerfile` の部分はわかりやすい文章に置き換えて構いません。
+`heroku-api-getting-started` フォルダで、次のコマンドを実行して変更をコミットします。`update api-server.Dockerfile` の部分は他の文章に置き換えても構いません。
 
 ```bash
 $ git commit -am "update api-server.Dockerfile"
 ```
 
-:::note
-`git clone` によってファイルを取得しているため、`heroku-api-getting-started` フォルダ内にはすでに `.git` フォルダが作成されています。そのためコミットする前に `git init` などをあらかじめ実行しておく必要はありません。
-:::
-
-次のコマンドを実行して、Heroku 上にアプリを作成します。`<Herokuアプリの名前>` の部分は好きな名前を入力してください。
+次のコマンドを実行して、heroku にコードを push する準備を整えます。`<APIサーバーのアプリケーション名>`の部分は、（後から変更していない場合は）`App name`に入力した名前と同じになります。
 
 ```bash
-$ heroku create "<Herokuアプリの名前>"
+$ heroku git:remote -a <APIサーバーのアプリケーション名>
 ```
 
-Heroku アプリはデフォルトの状態では Docker イメージによるビルドに対応していないため、次のコマンドを実行して対応させます。
-
-```bash
-$ heroku stack:set container
-```
-
-次のコマンドを実行して、作成されたアプリにデータを送信します。これにより自動的に Heroku でアプリのビルドが開始されます。ビルドが完了するまで数十秒程度かかります。
+次のコマンドを実行して、Herokuにデータを送信します。アップデートが完了するまで数分程度かかります。この間にログが表示されますが、これはHerokuから出力されているログを自動的に読み取っているだけであるため、通常は問題ありません。
 
 ```bash
 $ git push heroku main
 ```
 
-これで Heroku に API サーバーのアプリケーションコードを反映させることができました。ですが、API サーバーを稼働させるためには、データベースの設定と環境設定が必要です。
-
-## データベースの設定
-
-API サーバーのデータベースには PostgreSQL と SQLite が使用できます。この解説では Heroku に付随するサービスである Heroku Postgres を利用する方法を解説します。
-
-まず、<https://elements.heroku.com/addons/heroku-postgresql> にアクセスして、右上にある `Install Heroku Postgres` をクリックします。
-
-![postgres1.png](/img/docs/heroku/postgres1.png)
-
-`Add-on plan` からプランを選択して、`App to provision to` から先ほど作成したアプリを指定します。`Submit order form`をクリックすると PostgreSQL データベースが作成されます。
-
-![postgres2.png](/img/docs/heroku/postgres2.png)
-
-データベースの作成が成功すると、次の画面に移動します。
-
-![postgres3.png](/img/docs/heroku/postgres3.png)
-
-`Heroku Postgres` をクリックして Heroku Postgres の設定画面を開きます。
-
-![postgres4.png](/img/docs/heroku/postgres4.png)
-
-`Setting` をクリックします。`Database Credentials` の右にある `View Credentials` をクリックすると、Heroku PostgreSQL の URI（`postgres://` で始まる文字列）などが表示されます。この URI は環境設定で用いますので、必要であればメモしておきます。なお、この画面にはいつでもアクセスできます。
-
-![postgres5.png](/img/docs/heroku/postgres5.png)
-
-:::warn
-この URI にはデータベースのパスワードなどが含まれているため、この URI を知っている人物はこのデータベースを自由に読み書きできます。そのため、この文字列は自分以外に知られないように注意してください。
-:::
-
-作成した Heroku アプリのトップページに移動します。
-
-![heroku1.png](/img/docs/heroku/heroku1.png)
-
-`Settings` タブをクリックして、`Reveal Config Vars` を開きます。
-
-![heroku2.png](/img/docs/heroku/heroku2.png)
-
-次のように値を設定します。設定できる値について詳しく知りたい方は[環境変数](../vars.md)のページを参照してください。
-
-| KEY                           | VALUE                                                  | 必要性 | 備考                                                                       |
-| ----------------------------- | ------------------------------------------------------ | ------ | -------------------------------------------------------------------------- |
-| `AUTO_MIGRATION`              | `true`                                                 | 必須   |
-| `ENTRY_PASSWORD`              | [こちらを参照](../vars.md#ENTRY_PASSWORD)              | 任意   |
-| `FIREBASE_ADMIN_SECRET`       | [こちらを参照](../vars.md#ADMIN_SECRET)                | 必須   |
-| `NEXT_PUBLIC_FIREBASE_CONFIG` | [こちらを参照](../vars.md#NEXT_PUBLIC_FIREBASE_CONFIG) | 必須   |
-| `NODE_ENV`                    | `production`                                           | 任意   | `production`にすることで、デバッグモードではなく本番用モードで動作します。 |
-| `POSTGRESQL`                  | [こちらを参照](../vars.md#POSTGRESQL)                  | 必須   |                                                                            |
+これでアップデートは完了です。
