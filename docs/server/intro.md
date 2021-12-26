@@ -11,7 +11,7 @@ sidebar_position: 1
 
 1. [Firebase Authentication のセットアップ](./firebase_auth.md)
 1. [APIサーバーをHerokuに設置する](./api-server/deploy/heroku.md) 
-1. [WebサーバーをNetlifyのドラッグ＆ドロップ機能で設置する](./api-server/deploy/heroku.md) 
+1. [WebサーバーをNetlifyのドラッグ＆ドロップ機能で設置する](./web-server/deploy/netlify.md) 
 
 3 つともセットアップするのは一見すると大変ですが、それぞれなるべく簡単にセットアップできるよう心がけました。また、基本的な用途であれば、これらは全て無料で設置、運用できます。
 
