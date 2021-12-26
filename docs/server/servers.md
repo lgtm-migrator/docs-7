@@ -43,7 +43,7 @@ Firebase Authentication では、アカウントのパスワードなどとい�
 
 Flocon サーバーをセットアップするには、Firebase Authentication は必須です。ですが、2021 年 12 月現在で[Firebase Authentication は電話認証などといった特殊な機能を使わない限りは無料で利用できます](https://firebase.google.com/pricing?hl=ja)し、先述したとおり通常のログイン機能よりは安全性が高い面もあるため、基本的には Firebase Authentication と連携することによるメリットのほうが大きいと思われます。
 
-Firebase Authenticationをセットアップする方法は、[Firebase Authentication のセットアップ](./firebase)というページをご覧ください。
+Firebase Authenticationをセットアップする方法は、[Firebase Authentication のセットアップ](./firebase_auth)のページをご覧ください。
 
 #### Firebase Storage（任意）
 
