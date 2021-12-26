@@ -39,6 +39,10 @@ out フォルダの中身はほぼ全て[^1]がそのままの形でサイト上
 
 ![netlify1.png](/img/docs/netlify/2.png)
 
+:::tips
+アップロード直後などはサイトが重いことがあります。その場合は時間を空けて再度試してみてください。
+:::
+
 URL はこのままでも構いませんが、もし変更したい場合は`Site settings` > `Domain management` の `Custom domains` > `Options` などから変更できます。
 
 次に、[この解説](../firebase_auth.md)を参照してユーザーがこのサイトにログインできるようにします。
