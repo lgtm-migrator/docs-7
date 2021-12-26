@@ -13,22 +13,22 @@ const FeatureList = [
     ),
   },
   {
+    title: "多機能なセッションツール",
+    Svg: require("../../static/img/square-svgrepo-com.svg").default,
+    description: (
+      <>
+        FloconのTRPGセッションツールは、基本的なものから発展的なものまで、様々な機能に対応しています。
+      </>
+    ),
+  },
+  {
     title: "無料で利用、無料でサーバー運用",
     Svg: require("../../static/img/money-svgrepo-com.svg").default,
     description: (
       <>
         サーバーは、大きな負荷がかからない用途であれば
         <a href="https://heroku.com">Heroku</a>
-        などを利用することで無料で設置、運用できます。自鯖専用のアップローダーも無料でセットアップ可能です。
-      </>
-    ),
-  },
-  {
-    title: "多機能なセッションツール",
-    Svg: require("../../static/img/square-svgrepo-com.svg").default,
-    description: (
-      <>
-        FloconのTRPGセッションツールは、基本的なものから発展的なものまで、様々な機能に対応しています。
+        などを利用することで無料で設置、運用できます。自鯖専用のアップローダーもあわせて無料でセットアップ可能です。
       </>
     ),
   },
@@ -60,18 +60,6 @@ export default function HomepageFeatures() {
           {FeatureList.map((props, idx) => (
             <Feature key={idx} {...props} />
           ))}
-        </div>
-        <div style={{ paddingTop: 48 }}>
-          <h2>多彩なサーバーの設置方法</h2>
-          用途に応じた様々な設置方法に対応しています。
-          <ul className="checkmark" style={{ marginTop: 8 }}>
-            <li>HerokuとNetlifyを用いて、無料、お手軽、安全にサーバーを運用</li>
-            <li>
-              Amazon Web Services、Google
-              Cloudなどの様々なクラウドサービスで運用
-            </li>
-            <li>オンプレミスサーバーで運用</li>
-          </ul>
         </div>
         <div style={{ paddingTop: 48 }}>
           <h2>多機能なTRPGオンラインセッションツール</h2>
@@ -107,6 +95,18 @@ export default function HomepageFeatures() {
               Storageと、より多機能な内蔵アップローダーの2種類から使用可能
             </li>
             <li>外部URLから画像や音声などのデータの読み込み</li>
+          </ul>
+        </div>
+        <div style={{ paddingTop: 48 }}>
+          <h2>多彩なサーバーの設置方法</h2>
+          用途に応じた様々な設置方法に対応しています（現時点ではHerokuとNetlifyを用いる方法以外はドキュメントが未整備です。あらかじめご了承ください）。
+          <ul className="checkmark" style={{ marginTop: 8 }}>
+            <li>HerokuとNetlifyを用いて、無料、お手軽、安全にサーバーを運用</li>
+            <li>
+              Amazon Web Services、Google
+              Cloudなどの様々なクラウドサービスで運用
+            </li>
+            <li>オンプレミスサーバーで運用</li>
           </ul>
         </div>
         <div style={{ paddingTop: 48 }}>
