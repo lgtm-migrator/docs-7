@@ -19,20 +19,21 @@ function HomepageHeader() {
         </p>
         <div className={styles.buttons}>
           <Link
+            style={{ margin: "6px 12px" }}
             className="button button--secondary button--lg"
             to="/docs/intro"
           >
             ドキュメント
           </Link>
           <Link
-            style={{ marginLeft: 24 }}
+            style={{ margin: "6px 12px" }}
             className="button button--secondary button--lg"
             to="/docs/faq"
           >
-            {'Q&A'}
+            {"Q&A"}
           </Link>
           <Link
-            style={{ marginLeft: 24 }}
+            style={{ margin: "6px 12px" }}
             className="button button--secondary button--lg"
             href="https://sandbox-server.flocon.app/"
             target="_blank"
