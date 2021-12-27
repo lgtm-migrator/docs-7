@@ -5,7 +5,7 @@ sidebar_position: 1
 
 ## Web サーバーのファイルを準備する
 
-[Flocon のリリース一覧](https://github.com/flocon-trpg/servers/releases)からダウンロードしたいバージョンを探します。どのバージョンを選ぶべきかよくわからない場合は、基本的には Pre-release が付いているもの**以外**の中から最新のバージョンを選べば大丈夫だと思います。
+[Flocon のリリース一覧](https://github.com/flocon-trpg/servers/releases)からダウンロードしたいバージョンを探します。どのバージョンを選ぶべきかよくわからない場合は、基本的には Pre-release が付いてないものの中から最新のバージョンを選べば大丈夫だと思います。
 
 選んだバージョンの下の方に`web-server-static.zip`のリンクがあるので、それをダウンロードしてファイルを解凍します。
 
