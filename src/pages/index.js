@@ -39,7 +39,7 @@ function HomepageHeader() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            公式鯖
+            公式サーバー
           </Link>
         </div>
       </div>
