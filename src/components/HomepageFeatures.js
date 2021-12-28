@@ -114,17 +114,16 @@ export default function HomepageFeatures() {
           <img src="/img/sample_room.min.webp" />
         </div>
         <div style={{ paddingTop: 48 }}>
-          <h2>公式お試しサーバー</h2>
+          <h2>公式サーバー</h2>
           <div>
-            サーバーの設置が面倒だけどとりあえず試してみたい！という方のために、
             <a
-              href="https://sandbox-server.flocon.app/"
+              href="https://server1.flocon.app/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              公式お試しサーバー
+              公式サーバー
             </a>
-            も用意しています。よろしければぜひご活用ください。
+            も運用しています。よろしければぜひご利用ください。
           </div>
         </div>
       </div>

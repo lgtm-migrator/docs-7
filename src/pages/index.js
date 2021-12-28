@@ -35,11 +35,11 @@ function HomepageHeader() {
           <Link
             style={{ margin: "6px 12px" }}
             className="button button--secondary button--lg"
-            href="https://sandbox-server.flocon.app/"
+            href="https://server1.flocon.app/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            公式お試しサーバーに移動
+            公式鯖
           </Link>
         </div>
       </div>

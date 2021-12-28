@@ -63,8 +63,8 @@ const config = {
             label: "Q&A",
           },
           {
-            href: "https://sandbox-server.flocon.app",
-            label: "公式お試しサーバー",
+            href: "https://server1.flocon.app",
+            label: "公式サーバー",
             position: "left",
           },
           {
