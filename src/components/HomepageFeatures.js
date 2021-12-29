@@ -111,7 +111,7 @@ export default function HomepageFeatures() {
         </div>
         <div style={{ paddingTop: 48 }}>
           <h2>スクリーンショット</h2>
-          <img src="/img/sample_room.min.webp" />
+          <img src="/img/sample_room.min.webp" alt="スクリーンショット" />
         </div>
         <div style={{ paddingTop: 48 }}>
           <h2>公式サーバー</h2>
