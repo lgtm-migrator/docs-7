@@ -11,7 +11,7 @@ sidebar_position: 2
 
 ## API サーバーを設置する方法
 
-[リリース一覧](https://github.com/flocon-trpg/servers/releases)から、設置したい API サーバーのバージョンを探し、`Deploy to Heroku`というボタンをクリックします。基本的には Pre-release が付いていないものの中から最新のバージョンを選べば大丈夫だと思います。
+[リリース一覧](https://github.com/flocon-trpg/servers/releases)から、設置したい API サーバーのバージョンを探し、`Deploy to Heroku`というボタンをクリックします。基本的には`Deploy to Heroku`というボタンがあり、なおかつ Pre-release が付いていないものの中から最新のバージョンを選べば大丈夫だと思います。
 
 `Deploy to Heroku`ボタンをクリックすると、下のような画面が表示されると思います。
 
