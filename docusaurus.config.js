@@ -39,7 +39,7 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      image: 'img/sample_room.min.webp',
+      image: "img/sample_room.min.webp",
       colorMode: {
         defaultMode: "dark",
       },
@@ -121,6 +121,7 @@ const config = {
         locales: ["ja"],
       },
     }),
+  plugins: ["plugin-image-zoom"],
 };
 
 module.exports = config;

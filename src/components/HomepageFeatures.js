@@ -109,9 +109,10 @@ export default function HomepageFeatures() {
             <li>オンプレミスサーバーで運用</li>
           </ul>
         </div>
-        <div style={{ paddingTop: 48 }}>
+        {/* .markdownを付けることでplugin-image-zoomを有効化させている */}
+        <div className="markdown" style={{ paddingTop: 48 }}>
           <h2>スクリーンショット</h2>
-          <img src="/img/sample_room.min.webp" alt="スクリーンショット" />
+          <img  src="/img/sample_room.min.webp" alt="スクリーンショット" />
         </div>
         <div style={{ paddingTop: 48 }}>
           <h2>公式サーバー</h2>
