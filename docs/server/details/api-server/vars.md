@@ -1,9 +1,9 @@
 ---
-title: "環境変数"
-sidebar_position: 4
+title: "環境変数の一覧"
+sidebar_position: 3
 ---
 
-import { ApiVarExample as Example } from '../../../src/components/ApiVarExample';
+import { ApiVarExample as Example } from '../../../../src/components/ApiVarExample';
 
 ## ACCESS_CONTROL_ALLOW_ORIGIN（省略可）
 
@@ -101,10 +101,18 @@ descriptionOfDotEnv={<><code>$</code>はこの例のようにエスケープす�
 
 Firebase 管理ページから生成した Firebase Admin SDK の秘密鍵の値を設定できます。Google Compute Engine、Google App Engine など**以外**で API サーバーを動かす場合は、この設定は必須です。
 
-Firebase Admin SDKの秘密鍵を生成する方法は、[こちらのページ](./firebase_admin)を参照してください。
-
 :::info
 Firebase と同じサービスアカウントで管理している Google Compute Engine、Google App Engine などで API サーバーを動かす場合は、この値を設定しないことを推奨します。この値が設定されていない場合、API サーバーは[Firebase Admin SDK をパラメーターなしで初期化する](https://firebase.google.com/docs/admin/setup#initialize-without-parameters)ためです。
+:::
+
+Firebase Admin SDK の秘密鍵ファイルは次の方法で取得できます。
+
+Firebase の `プロジェクトの設定`（Firebase 管理ページ左上にある歯車アイコンから開けます） の `サービスアカウント` タブの下の方にある`新しい秘密鍵の生成`ボタンをクリックします。
+
+![1.png](/img/docs/vars/firebase_admin/1.png)
+
+:::danger
+秘密鍵を生成する際に表示されるメッセージにもあるとおり、秘密鍵のデータは第三者に漏洩しないように注意して管理してください。
 :::
 
 ### 入力例

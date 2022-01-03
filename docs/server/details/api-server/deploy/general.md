@@ -1,15 +1,9 @@
 ---
-title: "Heroku以外"
+title: "ソースコードからビルドして設置"
 sidebar_position: 3
 ---
 
-# Heroku以外でセットアップする方法
-
-このページでは、Heroku以外の一般的なAPIサーバーのセットアップする方法について説明します。
-
-:::info
-現時点では解説は用意できていませんが、Dockerを用いてセットアップすることも可能です。FloconのDockerイメージは[Docker Hub](https://hub.docker.com/repository/docker/kizahasi/flocon-api)もしくは[GitHubリポジトリにあるDockerfile](https://github.com/flocon-trpg/servers/tree/main/docker)から入手できます。
-:::
+# ソースコードからビルドしてAPIサーバーを設置する
 
 ## 必要環境
 
@@ -51,7 +45,7 @@ APIサーバーのソースコードをダウンロードします。様々な�
 $ git clone https://github.com/flocon-trpg/servers.git -b release --depth 1
 ```
 
-:::note
+:::caution
 `main`ブランチは開発用ブランチであるため、開発者以外の利用は推奨されません。
 :::
 
@@ -77,7 +71,7 @@ $ yarn workspaces focus
 $ yarn run build 
 ```
 
-`servers/apps/api-server`フォルダ内に`.env.local` ファイルを作成して、[環境変数](../vars)を参照してAPIサーバーの設定情報を入力して保存します。
+`servers/apps/api-server`フォルダ内に`.env.local` ファイルを作成して、[環境変数](../vars)のページを参照してAPIサーバーの設定情報を入力して保存します。
 
 手動でデータベースのマイグレーションを行う場合は、次のコマンドを実行します（自動マイグレーションを有効化している場合はこの作業は必要ありません）。
 
@@ -90,8 +84,6 @@ $ yarn run migration-up
 ```
 $ yarn run start
 ```
-
-ブラウザからAPIサーバーの動作を確認する場合、例えばAPIサーバーのURLが `http://example.com` であれば、`http://example.com/graphql` にアクセスします。Apollo Server のページ（夜空のような背景）が表示されていればおそらく成功です。
 
 これでAPIサーバーの導入は完了です。
 

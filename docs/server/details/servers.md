@@ -1,9 +1,9 @@
 ---
-title: "Firebaseと各サーバーの役割"
-sidebar_position: 2
+title: "Floconの構造"
+sidebar_position: 1
 ---
 
-Flocon のサーバーを設置するには、[Firebase Authentication のセットアップ](./firebase_auth)と、[API サーバー](./api-server/intro)、[Web サーバー](./web-server/intro)の 2 つのサーバーのセットアップが必要です。
+Flocon のサーバーを設置するには、Firebase Authentication のセットアップと、API サーバー、Web サーバーの 2 つのサーバーのセットアップが必要です。
 
 ![構成](/img/docs/servers-min.png)
 
@@ -17,17 +17,11 @@ Flocon のサーバーを設置するには、[Firebase Authentication のセッ
 
 [Firebase]は、Google が提供している、Web サイトの運用に役立つクラウドサービスです。アカウント管理やファイルの保存をクラウドで行ってくれます。
 
-Flocon では Firebase の使用が必須となっていますが、[Firebase は無料枠の範囲内であれば](https://firebase.google.com/pricing?hl=ja)無料で利用できます。身内サーバーであれば無料枠で運用可能だと思われます。公開サーバーなどのように比較的大勢のユーザーが利用するケースでも、無料枠内で運用できる方法を提供しています。
+Flocon では Firebase の使用が必須となっていますが、[Firebase は無料枠の範囲内であれば](https://firebase.google.com/pricing?hl=ja)無料で利用できます。身内サーバーであれば無料枠内で運用可能だと思われます。公開サーバーなどのように比較的大勢のユーザーが利用するケースでも、無料枠内で運用できる方法を提供しています。
 
-Flocon のサーバーを動かすには、サーバー管理者による Firebase のアカウントの作成とセットアップが必須となります。Flocon でセッションをプレイするユーザーはこれらを行う必要はありません。
+Flocon が Firebase を採用している理由は以下のとおりです。
 
-Flocon には、Firebase を用いたアカウント作成機能およびログイン機能が実装されています。Flocon サーバーでセッションをプレイするユーザーは、Flocon サーバーごとにアカウント作成とログインを行うことが基本的に必須となります。
-
-2 つの「アカウント」という言葉が出てきて紛らわしいため、これ以降「一般的に Flocon サーバーの管理者のみが作成する Firebase のアカウント」のことを「Firebase アカウント」、「セッションをプレイしたいユーザーが、誰かが運用する Flocon サーバーにログインする際に用いるアカウント」のことを「プレイヤーアカウント」と呼ぶことにします。端的にまとめると、「Firebase アカウント」は管理者用アカウント、「プレイヤーアカウント」は通常のアカウントを表します。
-
-Flocon が Firebase を利用している理由は以下のとおりです。
-
-- 後述する Firebase Storage サービスが使える。これにより身内サーバー程度の用途であれば、**Heroku Free プランでも永続的にファイルを保存できるアップローダーを無料で作成できる**。
+- 後述する Firebase Storage サービスが使える。これにより身内サーバー程度の用途であれば、**Heroku Free プラン等でも永続的にファイルを保存できるアップローダーを無料で作成できる**。
 - アップロードしたファイルを、1 つの部屋のみではなく全ての部屋で扱うことができる。
 - （まだ実装していませんが）例えば自分の作成した部屋をすべて取得するなど、アカウントに紐付いた便利な機能が実装されやすくなる。
 
@@ -41,9 +35,9 @@ Firebase Authentication は、安全なアカウント管理機能およびロ�
 
 Firebase Authentication では、アカウントのパスワードなどといった重要な機密情報は Google によって管理されるため、自鯖を設置してもそれらが漏洩するリスクが最小限になるというメリットがあります。
 
-Flocon サーバーをセットアップするには、Firebase Authentication は必須です。ですが、2021 年 12 月現在で[Firebase Authentication は電話認証などといった特殊な機能を使わない限りは無料で利用できます](https://firebase.google.com/pricing?hl=ja)し、先述したとおり通常のログイン機能よりは安全性が高い面もあるため、基本的には Firebase Authentication と連携することによるメリットのほうが大きいと思われます。
+Flocon サーバーをセットアップするには、Firebase Authentication は必須です。
 
-Firebase Authenticationをセットアップする方法は、[Firebase Authentication のセットアップ](./firebase_auth)のページをご覧ください。
+Firebase Authenticationをセットアップする方法は、チュートリアル内にある[ログイン機能のセットアップ](../tutorial/firebase_auth)のページをご覧ください。
 
 #### Firebase Storage（任意）
 
@@ -53,7 +47,7 @@ Firebase に付属するオンラインストレージサービスです。Floco
 
 Firebase Storage は、Heroku などのようにサーバー上のデータがリセットされるサービスでもデータを永続的に保管できるため、これらにおいて大きな効果を発揮します。
 
-ちなみに Flocon では、Firebase Storage を用いたアップローダーの他にも、API サーバーのストレージにデータを保管するアップローダー（API サーバー内蔵アップローダー）も使用可能です。片方のアップローダーだけを有効化することも、両方のアップローダーを有効化もしくは無効化することも可能です。
+ちなみに Flocon では、Firebase Storage を用いたアップローダーの他にも、API サーバーのストレージにデータを保管するアップローダー（API サーバー内蔵アップローダー）も使用可能です。片方のアップローダーだけを有効化することも、両方のアップローダーを有効化もしくは無効化することも可能です。アップローダーについての詳細は[こちらのページ](./uploader/intro.md)をご覧ください。
 
 ### Firebase サービスのアクセス権
 

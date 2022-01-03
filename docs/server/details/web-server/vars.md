@@ -1,11 +1,11 @@
 ---
-title: "環境変数"
+title: "環境変数の一覧"
 sidebar_position: 4
 ---
 
-import { WebVarExample as Example } from '../../../src/components/WebVarExample';
+import { WebVarExample as Example } from '../../../../src/components/WebVarExample';
 
-このページの代わりに[web-server設定ツール](https://tools.flocon.app/web-server)を用いることもできます。
+このページの代わりに[Webサーバー公式設定ツール](https://tools.flocon.app/web-server)を用いることもできます。
 
 ## NEXT_PUBLIC_API_HTTP（必須）{#NEXT_PUBLIC_API_HTTP}
 
@@ -27,9 +27,9 @@ APIサーバーのWebSocketのアドレスを入力します。通常は、(NEXT
 keyName='NEXT_PUBLIC_API_WS'
 value='wss://example.com' />
 
-## NEXT_PUBLIC_AUTH_PROVIDERS（必須）
+## NEXT_PUBLIC_AUTH_PROVIDERS（任意）
 
-Firebase Authenticationで有効化したログイン方法を入力します。複数ある場合は`,`で区切ります。
+Firebase Authenticationで有効化したログイン方法を入力することで、入力しなかったログイン方法をウェブページで隠すことができます。複数ある場合は`,`で区切ります。空の場合は、全てのログイン方法が表示されます。
 
 現時点で利用可能な値は、`anonymous`、`email`、`google`、`facebook`、`github`、`twitter`、`phone` です。
 
@@ -43,7 +43,7 @@ value='email,google' />
 
 ## NEXT_PUBLIC_FIREBASE_CONFIG（必須）
 
-[APIサーバーのNEXT_PUBLIC_FIREBASE_CONFIG](/docs/server/api-server/vars#NEXT_PUBLIC_FIREBASE_CONFIG)と同じ値を入力します。
+[APIサーバーのNEXT_PUBLIC_FIREBASE_CONFIG](/docs/server/details/api-server/vars#NEXT_PUBLIC_FIREBASE_CONFIG)と同じ値を入力します。
 
 ### 入力例
 
