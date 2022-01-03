@@ -42,7 +42,7 @@ const config = {
         {
           name: "description",
           content:
-            "Flocon（フロコン）は、自鯖での運用にフォーカスした多機能なTRPGオンラインセッションツールです。",
+            "Flocon（フロコン）は、自鯖での運用にフォーカスした多機能な新世代のTRPGオンラインセッションツールです。",
         },
       ],
       image: "img/sample_room.min.webp",
