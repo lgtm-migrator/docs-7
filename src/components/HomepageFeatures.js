@@ -124,7 +124,7 @@ export default function HomepageFeatures() {
             >
               公式サーバー
             </a>
-            も運用しています。よろしければぜひご利用ください。
+            も運用しています。もしよければぜひご利用ください。
           </div>
         </div>
       </div>
