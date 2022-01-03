@@ -8,7 +8,7 @@ const FeatureList = [
     Svg: require("../../static/img/server-svgrepo-com.svg").default,
     description: (
       <>
-        Floconは、個人サーバー上での運用にフォーカスしたTRPGオンラインセッションツールです。公開サーバーとしての運用にも対応しています。
+        Flocon（フロコン）は、自鯖（個人サーバー）での運用にフォーカスしたTRPGオンラインセッションツールです。公開サーバーとしての運用にも対応しています。
       </>
     ),
   },
