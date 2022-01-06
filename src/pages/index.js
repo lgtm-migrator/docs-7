@@ -15,7 +15,7 @@ function HomepageHeader() {
           Flocon（フロコン）
         </h1>
         <p className="hero__subtitle" style={{ color: "white" }}>
-          自鯖に設置できる新世代のTRPGオンラインセッションツール
+          無料で自鯖に設置できる新世代のTRPGオンラインセッションツール
         </p>
         <div className={styles.buttons}>
           <Link
