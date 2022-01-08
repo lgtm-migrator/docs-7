@@ -44,6 +44,11 @@ const config = {
           content:
             "Flocon（フロコン）は、無料で自鯖に設置できる多機能な新世代のTRPGオンラインセッションツールです。",
         },
+        {
+          property: "og:description",
+          content:
+            "Flocon（フロコン）は、無料で自鯖に設置できる多機能な新世代のTRPGオンラインセッションツールです。",
+        },
       ],
       image: "img/sample_room.min.webp",
       colorMode: {
