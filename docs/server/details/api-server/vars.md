@@ -7,7 +7,7 @@ import { ApiVarExample as Example } from '../../../../src/components/ApiVarExamp
 
 ## ACCESS_CONTROL_ALLOW_ORIGIN（省略可）
 
-API サーバーから送信される値に`Access-Control-Allow-Origin`ヘッダーを設定します。通常は[EMBUPLOADER_ENABLED](#EMBUPLOADER_ENABLED)を有効化していない場合は設定する必要はありません。
+API サーバーから送信される値に`Access-Control-Allow-Origin`ヘッダーを設定します。通常は、[EMBUPLOADER_ENABLED](#EMBUPLOADER_ENABLED)を有効化していない場合は設定する必要はありません。
 
 ### 入力例
 
@@ -123,37 +123,12 @@ value='{"private_key":"-----BEGIN PRIVATE KEY-----\n********************\n-----E
 
 `*`の部分を適切な文字列に置き換えてください。なお、実際の`private_key`の値はこの例に比べて非常に長いです。
 
-## NEXT_PUBLIC_FIREBASE_CONFIG（必須）{#NEXT_PUBLIC_FIREBASE_CONFIG}
+## HEROKU（省略可） {#HEROKU}
 
-Firebase の `プロジェクトの設定`（Firebase 管理ページ左上にある歯車アイコンから開けます） の `全般` タブの下の方にある `SDKの構成と設定` にある値を**JSON フォーマット**で入力します。
+`true`をセットすることで、Heroku に適したモードで API サーバーが稼働します。具体的には、次のような挙動になります。
 
-![firebase_config.png](/img/docs/vars/firebase_config/1.png)
-
-なお、デフォルトの状態では `SDKの構成と設定` は 1 つもありません。その場合は[アプリの追加方法](#add_firebase_app)から追加してください。
-
-### 入力例
-
-<Example
-keyName='NEXT_PUBLIC_FIREBASE_CONFIG'
-value='{"apiKey":"****************","authDomain":"********.firebaseapp.com","databaseURL":"https://********.firebaseio.com","projectId":"********","storageBucket":"********.appspot.com","messagingSenderId":"**********","appId":"****************"}' />
-
-`*`の部分を適切な文字列に置き換えてください。
-
-### アプリの追加方法 {#add_firebase_app}
-
-左上の「プロジェクトの概要」の右にある歯車から「プロジェクトの設定」を選択します。
-
-下の方にある、青い丸に白抜き文字で`</>`と書かれているボタンをクリックします。
-
-![7.png](/img/docs/vars/firebase_config/2.png)
-
-サイトの説明に従って、「アプリのニックネーム」を入力して「アプリを登録」ボタンを押します。自分がわかりやすい名前で構わないと思います。
-
-![8.png](/img/docs/vars/firebase_config/3.png)
-
-「Firebase SDK の追加」に SDK の情報が表示されますが、後でいつでも表示し直すことができるため、無視して下の「コンソールに進む」ボタンを押して構いません。`npm install firebase`も実行する必要はありません。
-
-![9.png](/img/docs/vars/firebase_config/4.png)
+- `DATABASE_URL`という環境変数がある場合、それをデータベースの URL として利用する。
+- Heroku PostgreSQL に対応した方法でデータベースに接続される。
 
 ## NODE_ENV （省略可）
 
@@ -200,7 +175,7 @@ descriptionOfHeroku={<>Heroku の場合は、この例のように<code>{'"drive
 使用しているデータベースの列やファイルサイズに大きな制限がない場合は、よほど長期間同じ部屋を使いまわしたりしない限り `ROOMHIST_COUNT` は設定しなくても問題ないと思われます。
 
 :::caution
-Heroku Postgres の Hobby Dev プランを使用する際は、5 ～ 20 程度の値を指定することを推奨します。
+Heroku Postgres の Hobby Dev プランを使用する際は、3 ～ 20 程度の値を指定することを推奨します。
 :::
 
 :::info
