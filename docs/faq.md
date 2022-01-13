@@ -1,6 +1,6 @@
 ---
 title: "Q&A"
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 # Q&A
@@ -27,10 +27,18 @@ Floconでは[Firebase Authentication](https://firebase.google.com/?hl=ja)とい�
 
 問題ありません。ただし、例えばもしメールアドレスで登録してパスワードを忘れた場合はそのメールアドレスにパスワードリセットのリンクが届く仕組みになっているため、試用する場合を除いて永続的に使えるメールアドレスを用いることを推奨します。
 
+## 自鯖を設置したらエントリーパスワードを求められたのですが、どうすればいいですか？ {#entry_password}
+
+`Deploy to Heroku`ボタンを用いてAPIサーバーを設置した場合、エントリーパスワードの初期値は`hi-flocon`となります。
+
+エントリーパスワードはAPIサーバー設置後でもHerokuの管理画面の`Config var`から変更できます。
+
+（なお、この`hi-flocon`という初期値は後々変更するかもしれません）
+
 ## 質問、バグ報告、要望などはどのように送ればいいですか？
 
 以下をご利用ください。
 
 - [GitHub](https://github.com/flocon-trpg/servers)のIssuesやDiscussions
 - [Discord](http://discord.gg/cy3vhmU6Tx)
-- [Twitterアカウント](https://twitter.com/flocon_trpg)宛にメンションもしくはDMを送信
+- [Twitterアカウント](https://twitter.com/flocon_trpg)の質問箱（peing）、もしくはメンション・DMを送信

@@ -27,7 +27,7 @@ Heroku は、クラウド上にサーバーを設置できる、比較的老舗�
 
 `Choose a region`は、日本国内からの利用が多そうであれば United States のままで問題ありません。
 
-必要であれば、`ENTRY_PASSWORD`を変更してください。
+必要であれば、`ENTRY_PASSWORD`からエントリーパスワード（自鯖に入るときの合言葉）を変更してください。初期値は`hi-flocon`となっています[^1]。
 
 `FIREBASE_ADMIN_SECRET`には、Firebase Admin SDK の秘密鍵ファイルの中身をそのまま入力してください。秘密鍵ファイルは次の方法で取得できます。
 
@@ -52,3 +52,5 @@ Firebase の `プロジェクトの設定`（Firebase 管理ページ左上に�
 Heroku は無料で利用できますが、課金することで API サーバーの性能をアップグレードすることも可能です。
 
 `Deploy to Heroku`ボタンから API サーバーを設置した場合、Heroku Postgres の Hobby Dev プラン（無料プラン）が合わせて自動的に設定されます。Heroku Postgres は Heroku 公式のアドオンですが、Heroku への課金と Heroku Postgres への課金は別体系ですので注意してください。もし課金する場合は、どこにボトルネックがあるかを確認してからどのように課金するかを事前に検討してください。
+
+[^1]: この初期値は後々変更するかもしれません。
