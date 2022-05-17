@@ -3,7 +3,8 @@ title: "環境変数の一覧"
 sidebar_position: 3
 ---
 
-import { ApiVarExample as Example } from '../../../../src/components/ApiVarExample';
+import { Fragment } from 'react'
+import { ApiVarExample as Example } from '@site/src/components/ApiVarExample';
 
 ## ACCESS_CONTROL_ALLOW_ORIGIN（省略可）
 
@@ -95,7 +96,7 @@ value='{"type":"plain","value":"******"}' />
 keyName='ENTRY_PASSWORD'
 value='{"type":"bcrypt","value":"$2b$10$ABC.defgh.igklmnopq/qwertyuiopasdfghjklzxcvbnm0123"}'
 valueOfDotEnv='{"type":"bcrypt","value":"\$2b\$10\$ABC.defgh.igklmnopq/qwertyuiopasdfghjklzxcvbnm0123"}'
-descriptionOfDotEnv={<><code>$</code>はこの例のようにエスケープする必要があります。</>} />
+descriptionOfDotEnv={<Fragment><code>$</code>はこの例のようにエスケープする必要があります。</Fragment>} />
 
 ## FIREBASE_ADMIN_SECRET（特定の状況を除いて必須）{#FIREBASE_ADMIN_SECRET}
 
@@ -121,7 +122,7 @@ Firebase の `プロジェクトの設定`（Firebase 管理ページ左上に�
 keyName='FIREBASE_ADMIN_SECRET'
 value='{"private_key":"-----BEGIN PRIVATE KEY-----\n********************\n-----END PRIVATE KEY-----\n","client_email":"************.iam.gserviceaccount.com"' />
 
-`*`の部分を適切な文字列に置き換えてください。なお、実際の`private_key`の値はこの例に比べて非常に長いです。
+`*`の部分を適切な文字列に置き換えてください。なお、実際の`private_key`の値はこの例と比べて非常に長いです。
 
 ## HEROKU（省略可） {#HEROKU}
 
@@ -166,7 +167,7 @@ PostgreSQL の設定を行うことができます。
 keyName='POSTGRESQL'
 value='{"clientUrl":"postgresql://myuser:mypassword@localhost:5432/mydbname"}'
 valueOfHeroku='{"clientUrl":"postgresql://myuser:mypassword@localhost:5432/mydbname", "driverOptions":{"connection": {"ssl": {"rejectUnauthorized": false}}}}'
-descriptionOfHeroku={<>Heroku の場合は、この例のように<code>{'"driverOptions":{"connection": {"ssl": {"rejectUnauthorized": false}}}'}</code>も JSON に書き加えなければ正常に動作しない可能性があります。</>} />
+descriptionOfHeroku={<Fragment>Heroku の場合は、この例のように<code>{'"driverOptions":{"connection": {"ssl": {"rejectUnauthorized": false}}}'}</code>も JSON に書き加えなければ正常に動作しない可能性があります。</Fragment>} />
 
 ## ROOMHIST_COUNT（省略可）
 
