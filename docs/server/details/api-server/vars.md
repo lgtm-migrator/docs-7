@@ -215,7 +215,7 @@ descriptionOfHeroku={<Fragment>Heroku の場合は、この例のように<code>
 使用しているデータベースの列やファイルサイズに大きな制限がない場合は、よほど長期間同じ部屋を使いまわしたりしない限り `ROOMHIST_COUNT` は設定しなくても問題ないと思われます。
 
 :::caution
-Heroku Postgres の Hobby Dev プランを使用する際は、3 ～ 20 程度の値を指定することを推奨します。
+Heroku Postgres の Hobby Dev プランを使用する際は、1 ～ 20 程度の値を指定することを推奨します。
 :::
 
 :::info
