@@ -10,7 +10,7 @@ import Admonition from '@theme/Admonition';
 export const DatabaseCaution = () => 
     <Admonition type="caution">
         <p>
-            <a href="#HEROKU">HEROKU</a>をtrueにしていない場合は、<a href="POSTGRESQL">POSTGRESQL</a>と<a href="MYSQL">MYSQL</a>と<a href="SQLITE">SQLITE</a>のうち、少なくとも 1 つの値を設定する必要があります。
+            <a href="#HEROKU">HEROKU</a>をtrueにしていない場合は、<a href="#POSTGRESQL">POSTGRESQL</a>と<a href="#MYSQL">MYSQL</a>と<a href="#SQLITE">SQLITE</a>のうち、少なくとも 1 つの値を設定する必要があります。
         </p>
     </Admonition>
 
