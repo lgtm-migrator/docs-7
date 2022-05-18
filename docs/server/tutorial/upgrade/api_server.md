@@ -7,8 +7,12 @@ sidebar_position: 1
 
 設置済みの API サーバーのアップデートは手動で行う必要があります。ここでは git を用いたアップデート方法を説明します。
 
+:::info
+Heroku における API サーバーのアップデートは git などを使用するため、`Deploy to Heroku` ボタンによる新規作成と比べて少し手間がかかります。ですので git に馴染みがないなどの場合は、アップデートするのではなく新規作成してしまうほうが簡単かもしれません。新規作成の場合は、旧 API サーバーのデータはそのまま残りますので、Heroku Postgres のバックアップも必要なくなるといったメリットがあります。Firebase プロジェクトは、API サーバー新規作成の場合でも既に使っているものを流用できますし、複数の API サーバーで並行して利用することもできます。ただし旧 API サーバーを Heroku から削除せずに残す場合は、Heroku の dyno の消費量などに気を付けてください。
+:::
+
 :::caution
-もし削除されてほしくない部屋データなどがある場合は、事前に Heroku Postgres のバックアップ機能を用いて、データベースのバックアップを取っておくことを推奨します。
+もし削除されてほしくない部屋データなどがある場合は、アップデート前に Heroku Postgres のバックアップ機能を用いて、データベースのバックアップを取っておくことを推奨します。
 :::
 
 まず [Heroku CLI と git をインストール](https://devcenter.heroku.com/ja/articles/heroku-cli)します。
@@ -33,7 +37,7 @@ $ git clone https://github.com/flocon-trpg/heroku-api-getting-started.git
 $ git commit -am "update api-server.Dockerfile"
 ```
 
-次のコマンドを実行して、heroku にコードを push する準備を整えます。`<APIサーバーのアプリケーション名>`の部分は、（後から変更していない場合は）`App name`に入力した名前と同じになります。
+次のコマンドを実行して、Heroku にコードを push する準備を整えます。`<APIサーバーのアプリケーション名>`の部分は、Heroku の `App name` の値と同じになります。
 
 ```bash
 $ heroku git:remote -a <APIサーバーのアプリケーション名>
