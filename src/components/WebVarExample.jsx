@@ -12,7 +12,7 @@ export const WebVarExample = ({
 }) => {
   return (
     <Tabs groupId="envType">
-      <TabItem value="dotenv" label=".env.local/.env">
+      <TabItem value="dotenv" label=".env.local, .env">
         <p>
           <code>
             {keyName}={valueOfDotEnv ?? value}
