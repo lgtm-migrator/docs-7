@@ -68,8 +68,9 @@ const config = {
             label: "ドキュメント",
           },
           {
-            href: "https://server1.flocon.app",
-            label: "公式サーバー",
+            type: "doc",
+            docId: "public_servers",
+            label: "公開サーバー一覧",
             position: "left",
           },
           {
