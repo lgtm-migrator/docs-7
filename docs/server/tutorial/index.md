@@ -1,5 +1,5 @@
 ---
-title: "はじめに"
+title: "チュートリアル"
 sidebar_position: 1
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "ログイン機能のセットアップ"
+title: "1. ログイン機能のセットアップ"
 sidebar_position: 2
 ---
 

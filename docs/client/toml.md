@@ -1,5 +1,6 @@
 ---
 sidebar_position: 3
+description: キャラクター変数の書き方
 ---
 
 # キャラクター変数

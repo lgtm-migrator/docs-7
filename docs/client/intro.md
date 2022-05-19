@@ -1,5 +1,6 @@
 ---
 sidebar_position: 1
+description: 基本的な利用方法
 ---
 
 # チュートリアル

@@ -1,5 +1,5 @@
 ---
-title: "APIサーバーを設置する"
+title: "2. APIサーバーを設置する"
 sidebar_position: 3
 ---
 
