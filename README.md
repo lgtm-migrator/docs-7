@@ -1,3 +1,3 @@
 # Floconドキュメント
 
-<https://flocon.app> のソースコードです
+<https://flocon.app> のソースコードです。
