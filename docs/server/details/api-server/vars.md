@@ -96,7 +96,7 @@ value='{"type":"none"}' />
 keyName='ENTRY_PASSWORD'
 value='{"type":"plain","value":"******"}' />
 
-`*`の部分はユーザーに要求するパスワードに置き換えてください。
+`******`の部分はユーザーに要求するパスワードに置き換えてください。
 
 #### bcrypt のハッシュ値でパスワードを設定する場合
 
@@ -136,13 +136,13 @@ value='{"private_key":"-----BEGIN PRIVATE KEY-----\n********************\n-----E
 
 `*`の部分を適切な文字列に置き換えてください。なお、実際の`private_key`の値はこの例と比べて非常に長いです。
 
-## FLOCON_ADMIN (省略可) (v0.7.2で追加){#FLOCON_ADMIN}
+## FLOCON_ADMIN (省略可) (v0.7.2 で追加){#FLOCON_ADMIN}
 
-管理者権限を与えるユーザーを指定できます。ユーザーを指定するには、Firebase Authentication のユーザーUIDを記述します。複数のユーザーを指定する場合は、半角カンマで区切ります。
+管理者権限を与えるユーザーを指定できます。ユーザーを指定するには、Firebase Authentication のユーザー UID を記述します。複数のユーザーを指定する場合は、半角カンマで区切ります。
 
-APIサーバーv0.7.2 の時点では、管理者には部屋一覧を表示する画面から任意の部屋を削除できる権限が与えられます。これ以外の機能もおいおい追加するかもしれません。
+API サーバー v0.7.2 の時点では、管理者には部屋一覧を表示する画面から任意の部屋を削除できる権限が与えられます。これ以外の機能もおいおい追加するかもしれません。
 
-管理者は必ずしもサーバーの運用者と一致させる必要はありません。また、管理者は0人でも構いません。
+管理者は必ずしもサーバーの運用者と一致させる必要はありません。また、管理者は 0 人でも構いません。
 
 公開サーバーでは管理者がいると便利な場面があるかもしれませんが、身内サーバーではあまり必要ないかと思われます。
 
@@ -169,14 +169,15 @@ MySQL の設定を行うことができます。
 
 <Example
 keyName='MYSQL'
-value='{"clientUrl":"mysql://myuser:mypassword@localhost:5432/mydbname"}' />
+value='{"clientUrl":"mysql://myuser:mypassword@localhost:5432/mydbname"}'
+notRecommendedAtFlyToml />
 
-## NODE_ENV  (省略可)
+## NODE_ENV (省略可)
 
 `production`をセットすると、API サーバーが本番環境のモードで実行されるようになります。デバッグ目的などでない限りは`production`をセットすることが望ましいです。
 
 :::note
-これは正確にはFloconのAPIサーバーではなくNode.jsの機能です。
+これは正確には Flocon の API サーバーではなく Node.js の機能です。
 :::
 
 ### 入力例
@@ -193,6 +194,13 @@ value='production' />
 Heroku にデプロイする場合は設定しないでください。
 :::
 
+### 入力例
+
+<Example
+keyName='PORT'
+value='8080'
+hideHeroku />
+
 ## POSTGRESQL (省略可){#POSTGRESQL}
 
 PostgreSQL の設定を行うことができます。
@@ -205,7 +213,9 @@ PostgreSQL の設定を行うことができます。
 keyName='POSTGRESQL'
 value='{"clientUrl":"postgresql://myuser:mypassword@localhost:5432/mydbname"}'
 valueOfHeroku='{"clientUrl":"postgresql://myuser:mypassword@localhost:5432/mydbname", "driverOptions":{"connection": {"ssl": {"rejectUnauthorized": false}}}}'
-descriptionOfHeroku={<Fragment>Heroku の場合は、この例のように<code>{'"driverOptions":{"connection": {"ssl": {"rejectUnauthorized": false}}}'}</code>も JSON に書き加えなければ正常に動作しない可能性があります。</Fragment>} />
+descriptionOfHeroku={<Fragment>Heroku の場合は、この例のように<code>{'"driverOptions":{"connection": {"ssl": {"rejectUnauthorized": false}}}'}</code>も JSON に書き加えないと正常に動作しない可能性があります。</Fragment>}
+notRecommendedAtFlyToml
+/>
 
 ## ROOMHIST_COUNT (省略可)
 
