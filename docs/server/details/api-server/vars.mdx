@@ -3,16 +3,20 @@ title: "環境変数の一覧"
 sidebar_position: 3
 ---
 
-import { Fragment } from 'react'
-import { ApiVarExample as Example } from '@site/src/components/ApiVarExample';
-import Admonition from '@theme/Admonition';
+import { Fragment } from "react";
+import { ApiVarExample as Example } from "@site/src/components/ApiVarExample";
+import Admonition from "@theme/Admonition";
 
-export const DatabaseCaution = () => 
-    <Admonition type="caution">
-        <p>
-            <a href="#HEROKU">HEROKU</a>をtrueにしていない場合は、<a href="#POSTGRESQL">POSTGRESQL</a>と<a href="#MYSQL">MYSQL</a>と<a href="#SQLITE">SQLITE</a>のうち、少なくとも 1 つの値を設定する必要があります。
-        </p>
-    </Admonition>
+export const DatabaseCaution = () => (
+  <Admonition type="caution">
+    <p>
+      <a href="#HEROKU">HEROKU</a>をtrueにしていない場合は、
+      <a href="#POSTGRESQL">POSTGRESQL</a>と<a href="#MYSQL">MYSQL</a>と
+      <a href="#SQLITE">SQLITE</a>のうち、少なくとも 1
+      つの値を設定する必要があります。
+    </p>
+  </Admonition>
+);
 
 ## ACCESS_CONTROL_ALLOW_ORIGIN (省略可)
 
@@ -20,9 +24,7 @@ API サーバーから送信される値に`Access-Control-Allow-Origin`ヘッ�
 
 ### 入力例
 
-<Example
-keyName='ACCESS_CONTROL_ALLOW_ORIGIN'
-value='https://example.com' />
+<Example keyName="ACCESS_CONTROL_ALLOW_ORIGIN" value="https://example.com" />
 
 ## AUTO_MIGRATION (省略可){#AUTO_MIGRATION}
 
@@ -34,9 +36,7 @@ value='https://example.com' />
 
 ### 入力例
 
-<Example
-keyName='AUTO_MIGRATION'
-value='true' />
+<Example keyName="AUTO_MIGRATION" value="true" />
 
 ## EMBUPLOADER_ENABLED (省略可){#EMBUPLOADER_ENABLED}
 
@@ -64,9 +64,7 @@ API サーバー内蔵アップローダーは、Firebase Storage 版アップ�
 
 API サーバー内蔵アップローダーのファイルを保存するパスを設定します。値がない場合は API サーバー内蔵アップローダーは無効化されます。
 
-<Example
-keyName='EMBUPLOADER_PATH'
-value='./uploader' />
+<Example keyName="EMBUPLOADER_PATH" value="./uploader" />
 
 ## EMBUPLOADER_SIZE_QUOTA (省略可)
 
@@ -86,25 +84,26 @@ value='./uploader' />
 
 #### パスワードを設定しない場合
 
-<Example
-keyName='ENTRY_PASSWORD'
-value='{"type":"none"}' />
+<Example keyName="ENTRY_PASSWORD" value='{"type":"none"}' />
 
 #### 平文でパスワードを設定する場合
 
-<Example
-keyName='ENTRY_PASSWORD'
-value='{"type":"plain","value":"******"}' />
+<Example keyName="ENTRY_PASSWORD" value='{"type":"plain","value":"******"}' />
 
 `******`の部分はユーザーに要求するパスワードに置き換えてください。
 
 #### bcrypt のハッシュ値でパスワードを設定する場合
 
 <Example
-keyName='ENTRY_PASSWORD'
-value='{"type":"bcrypt","value":"$2b$10$ABC.defgh.igklmnopq/qwertyuiopasdfghjklzxcvbnm0123"}'
-valueOfDotEnv='{"type":"bcrypt","value":"\$2b\$10\$ABC.defgh.igklmnopq/qwertyuiopasdfghjklzxcvbnm0123"}'
-descriptionOfDotEnv={<Fragment><code>$</code>はこの例のようにエスケープする必要があります。</Fragment>} />
+  keyName="ENTRY_PASSWORD"
+  value='{"type":"bcrypt","value":"$2b$10$ABC.defgh.igklmnopq/qwertyuiopasdfghjklzxcvbnm0123"}'
+  valueOfDotEnv='{"type":"bcrypt","value":"\$2b\$10\$ABC.defgh.igklmnopq/qwertyuiopasdfghjklzxcvbnm0123"}'
+  descriptionOfDotEnv={
+    <Fragment>
+      <code>$</code>はこの例のようにエスケープする必要があります。
+    </Fragment>
+  }
+/>
 
 `$2b$10$ABC.defgh.igklmnopq/qwertyuiopasdfghjklzxcvbnm0123`の部分は bcrypt のハッシュ値に置き換えてください。
 
@@ -131,8 +130,9 @@ Firebase の `プロジェクトの設定`（Firebase 管理ページ左上に�
 ### 入力例
 
 <Example
-keyName='FIREBASE_ADMIN_SECRET'
-value='{"private_key":"-----BEGIN PRIVATE KEY-----\n********************\n-----END PRIVATE KEY-----\n","client_email":"************.iam.gserviceaccount.com"' />
+  keyName="FIREBASE_ADMIN_SECRET"
+  value='{"private_key":"-----BEGIN PRIVATE KEY-----\n********************\n-----END PRIVATE KEY-----\n","client_email":"************.iam.gserviceaccount.com"'
+/>
 
 `*`の部分を適切な文字列に置き換えてください。なお、実際の`private_key`の値はこの例と比べて非常に長いです。
 
@@ -148,9 +148,7 @@ API サーバー v0.7.2 の時点では、管理者には部屋一覧を表示�
 
 ### 入力例
 
-<Example
-keyName='FLOCON_ADMIN'
-value='abcDEFghiJKL123,MNOpqrSTUvwx456' />
+<Example keyName="FLOCON_ADMIN" value="abcDEFghiJKL123,MNOpqrSTUvwx456" />
 
 ## HEROKU (省略可) {#HEROKU}
 
@@ -168,9 +166,10 @@ MySQL の設定を行うことができます。
 ### 入力例
 
 <Example
-keyName='MYSQL'
-value='{"clientUrl":"mysql://myuser:mypassword@localhost:5432/mydbname"}'
-notRecommendedAtFlyToml />
+  keyName="MYSQL"
+  value='{"clientUrl":"mysql://myuser:mypassword@localhost:5432/mydbname"}'
+  notRecommendedAtFlyToml
+/>
 
 ## NODE_ENV (省略可)
 
@@ -182,9 +181,7 @@ notRecommendedAtFlyToml />
 
 ### 入力例
 
-<Example
-keyName='NODE_ENV'
-value='production' />
+<Example keyName="NODE_ENV" value="production" />
 
 ## PORT (省略可)
 
@@ -196,10 +193,7 @@ Heroku にデプロイする場合は設定しないでください。
 
 ### 入力例
 
-<Example
-keyName='PORT'
-value='8080'
-hideHeroku />
+<Example keyName="PORT" value="8080" hideHeroku />
 
 ## POSTGRESQL (省略可){#POSTGRESQL}
 
@@ -210,11 +204,21 @@ PostgreSQL の設定を行うことができます。
 ### 入力例
 
 <Example
-keyName='POSTGRESQL'
-value='{"clientUrl":"postgresql://myuser:mypassword@localhost:5432/mydbname"}'
-valueOfHeroku='{"clientUrl":"postgresql://myuser:mypassword@localhost:5432/mydbname", "driverOptions":{"connection": {"ssl": {"rejectUnauthorized": false}}}}'
-descriptionOfHeroku={<Fragment>Heroku の場合は、この例のように<code>{'"driverOptions":{"connection": {"ssl": {"rejectUnauthorized": false}}}'}</code>も JSON に書き加えないと正常に動作しない可能性があります。</Fragment>}
-notRecommendedAtFlyToml
+  keyName="POSTGRESQL"
+  value='{"clientUrl":"postgresql://myuser:mypassword@localhost:5432/mydbname"}'
+  valueOfHeroku='{"clientUrl":"postgresql://myuser:mypassword@localhost:5432/mydbname", "driverOptions":{"connection": {"ssl": {"rejectUnauthorized": false}}}}'
+  descriptionOfHeroku={
+    <Fragment>
+      Heroku の場合は、この例のように
+      <code>
+        {
+          '"driverOptions":{"connection": {"ssl": {"rejectUnauthorized": false}}}'
+        }
+      </code>
+      も JSON に書き加えないと正常に動作しない可能性があります。
+    </Fragment>
+  }
+  notRecommendedAtFlyToml
 />
 
 ## ROOMHIST_COUNT (省略可)
@@ -233,9 +237,7 @@ Heroku Postgres の Hobby Dev プランを使用する際は、1 ～ 20 程度�
 
 ### 入力例
 
-<Example
-keyName='ROOMHIST_COUNT'
-value='10' />
+<Example keyName="ROOMHIST_COUNT" value="10" />
 
 ## SQLITE (省略可){#SQLITE}
 
@@ -245,6 +247,4 @@ SQLite の設定を行うことができます。
 
 ### 入力例
 
-<Example
-keyName='SQLITE'
-value='{"dbName":"./flocon-api.sqlite3"}' />
+<Example keyName="SQLITE" value='{"dbName":"./flocon-api.sqlite3"}' />
