@@ -106,18 +106,17 @@ value='{"type":"bcrypt","value":"$2b$10$ABC.defgh.igklmnopq/qwertyuiopasdfghjklz
 valueOfDotEnv='{"type":"bcrypt","value":"\$2b\$10\$ABC.defgh.igklmnopq/qwertyuiopasdfghjklzxcvbnm0123"}'
 descriptionOfDotEnv={<Fragment><code>$</code>はこの例のようにエスケープする必要があります。</Fragment>} />
 
-## FIREBASE_ADMIN_SECRET (特定の状況を除いて必須){#FIREBASE_ADMIN_SECRET}
+`$2b$10$ABC.defgh.igklmnopq/qwertyuiopasdfghjklzxcvbnm0123`の部分は bcrypt のハッシュ値に置き換えてください。
+
+## FIREBASE_ADMIN_SECRET (任意){#FIREBASE_ADMIN_SECRET}
+
+:::info
+2022 年 8 月頃までのドキュメントには、この設定は必須と書かれていましたが、確認したところ実際は必要ないことが判明しました。**この環境変数の設定の有無は現時点では Flocon の動作に影響を及ぼさないと考えられるため、設定する必要はありません。**同様に、Firebase Admin SDK の秘密鍵ファイルの生成も行う必要はありません。
+
+ただし、将来 Flocon に新機能が追加された際に、この環境変数を設定しなければその新機能を使えない、といった状況が生じる可能性はあります。そのため、現在の Flocon のソースコードにも`FIREBASE_ADMIN_SECRET`を読み取る機能は残されており、`FIREBASE_ADMIN_SECRET`の値が存在すれば Firebase Admin SDK の初期化に引き続き用いられるようになっています。
+:::
 
 Firebase 管理ページから生成した Firebase Admin SDK の秘密鍵の値を設定できます。
-
-Firebase と同じサービスアカウントで管理している Google Compute Engine、Google App Engine などで API サーバーを動かす場合は、この値が設定されていなければ自動的にFirebase Admin SDK の秘密鍵が取得されるため、設定しないことを推奨します。
-
-逆に、これら以外で API サーバーを動かす場合は、設定は必須となります。Heroku はこちらのケースに該当します。
-
-:::note `FIREBASE_ADMIN_SECRET` の値の有無による挙動の違いの詳細
-`FIREBASE_ADMIN_SECRET` が設定されていない場合は、API サーバーのプログラムは [Firebase Admin SDK をパラメーターなしで初期化](https://firebase.google.com/docs/admin/setup#initialize-without-parameters)しようとします。この場合は Firebase Admin SDK は秘密鍵を自動的に取得しようとします。自動的に取得できる条件は先ほどのリンク先を参照してください。取得できなかった場合はエラーが発生して API サーバーは停止します。<br />
-`FIREBASE_ADMIN_SECRET` が設定されている場合は、自動的に取得できるかどうかに関わらず API サーバーのプログラムは Firebase Admin SDK を `FIREBASE_ADMIN_SECRET` の値を用いて初期化しようとします。
-:::
 
 Firebase Admin SDK の秘密鍵ファイルは次の方法で取得できます。
 
