@@ -7,9 +7,9 @@ sidebar_position: 3
 
 ## 必要環境
 
-OS は Ubuntu Server 20.04 x64 で動作確認しています。他の Linux ディストリビューションや、Windows、macOS でもおそらく動くと思いますが、[bcrypt](https://github.com/kelektiv/node.bcrypt.js#nodebcryptjs)パッケージなどの影響で追加の作業が必要になる可能性があります。
+OS は Ubuntu Server 20.04 x64 で動作確認しています。他の Linux ディストリビューションや、Windows、macOS でもおそらく動くと思いますが、[bcryptパッケージ](https://www.npmjs.com/package/bcrypt)などの影響で追加の作業が必要になる可能性があります。
 
-API サーバーの稼働自体は Google Compute Engine の E2-micro 程度のスペックでも可能ですが、npm パッケージのインストールおよびビルドにはスワップ領域込みでメモリ 3 ～ 4GB 程度が必要なようです。そのため、Google Compute Engine や Amazon EC2 などのようにサーバーのスペックを自由に切り替えられるサービスを利用している場合は、インストールおよびビルドのときにのみスペックを一時的に上げるか、Docker イメージを用いることを推奨します。
+API サーバーの稼働自体は Google Compute Engine の E2-micro 程度のスペックでも可能ですが、npm パッケージのインストールおよびビルドにはスワップ領域込みでメモリ 3 ～ 4GB 程度が必要になることが確認されています。そのため、Google Compute Engine や Amazon EC2 などのようにサーバーのスペックを自由に切り替えられるサービスを利用している場合は、インストールおよびビルドのときにのみスペックを一時的に上げるか、Docker イメージを用いることを推奨します。
 
 ## セットアップ方法
 
@@ -45,7 +45,7 @@ API サーバーのソースコードをダウンロードします。様々な�
 $ git clone https://github.com/flocon-trpg/servers.git -b release --depth 1
 ```
 
-:::caution
+:::note
 `main`ブランチは開発用ブランチであるため、開発者以外の利用は推奨されません。
 :::
 
@@ -73,7 +73,7 @@ $ yarn run build
 
 `servers/apps/api-server`フォルダ内に`.env.local` ファイルを作成して、[環境変数](../vars)のページを参照して API サーバーの設定情報を入力して保存します。
 
-API サーバーを動かすにはデータベースのマイグレーションを事前に行う必要があります。手動でデータベースのマイグレーションを行う場合は、次のコマンドを実行します（`AUTO_MIGRATION` を有効化している場合はこの作業は必要ありません）。
+API サーバーを動かすにはデータベースのマイグレーションを事前に行う必要があります。手動でデータベースのマイグレーションを行う場合は、次のコマンドを実行します（環境変数の `AUTO_MIGRATION` を有効化している場合はこの作業は必要ありません）。
 
 ```console
 $ yarn run migration-up

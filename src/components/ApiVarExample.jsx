@@ -2,6 +2,10 @@ import React from "react";
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
+const codeStyle = {
+whiteSpace: 'nowrap', overflowX: 'auto'
+}
+
 const FlyToml = ({ keyName, value, notRecommended }) => {
   let codeValue;
   if (value.includes('"')) {
@@ -14,7 +18,7 @@ const FlyToml = ({ keyName, value, notRecommended }) => {
   }
   return (
     <>
-      <p>
+      <p style={codeStyle}>
         <code>
           {keyName}={codeValue}
         </code>
@@ -49,7 +53,7 @@ export const ApiVarExample = ({
         />
       </TabItem>
       <TabItem value="flyctl-secrets" label="flyctl secrets set コマンド">
-        <p>
+        <p style={codeStyle}>
           <code>
             flyctl secrets set {keyName}={value}
           </code>
@@ -57,7 +61,7 @@ export const ApiVarExample = ({
       </TabItem>
       <TabItem value="dotenv" label=".env.local, .env">
         <p>
-          <code>
+          <code style={codeStyle}>
             {keyName}={value}
           </code>
         </p>

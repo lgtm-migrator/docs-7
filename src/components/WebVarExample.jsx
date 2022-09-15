@@ -2,6 +2,10 @@ import React from "react";
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
+const codeStyle = {
+whiteSpace: 'nowrap', overflowX: 'auto'
+}
+
 export const WebVarExample = ({
   keyName,
   value,
@@ -13,7 +17,7 @@ export const WebVarExample = ({
   return (
     <Tabs groupId="envType">
       <TabItem value="dotenv" label=".env.local, .env">
-        <p>
+        <p style={codeStyle}>
           <code>
             {keyName}={valueOfDotEnv ?? value}
           </code>

@@ -107,6 +107,11 @@ API サーバー内蔵アップローダーのファイルを保存するパス�
 
 `$2b$10$ABC.defgh.igklmnopq/qwertyuiopasdfghjklzxcvbnm0123`の部分は bcrypt のハッシュ値に置き換えてください。
 
+bcrypt のハッシュ値は様々な方法で生成できます。どの方法を用いても構いません。Flocon では次の2つの方法を提供しています。
+
+- [https://tools.flocon.app/bcrypt](https://tools.flocon.app/bcrypt) で生成する。最も手軽ですが、このページには [npm の bcryptjs パッケージ](https://www.npmjs.com/package/bcryptjs) を使っているため、APIサーバーに使用している [bcrypt パッケージ](https://www.npmjs.com/package/bcrypt)では認識できないハッシュ値が生成される可能性があります。その場合は、日本語などを用いない、もしくはパスワードを短くすることで解決できる可能性があります。
+- [Floconのソースコード](https://github.com/flocon-trpg/servers)に付属している`bcrypt-interactive`スクリプトを利用する。`apps/api-server`ディレクトリで `yarn run bcrypt-interactive`を実行すると、bcrypt ハッシュ値生成プログラムが起動します。[bcrypt パッケージ](https://www.npmjs.com/package/bcrypt) が使われますが、事前に Node.js と yarn のインストール、`yarn install` コマンドによる数百MBのファイルのインストールをする必要があるなど、ハードルが高いのが欠点です。
+
 ## FIREBASE_ADMIN_SECRET (任意){#FIREBASE_ADMIN_SECRET}
 
 :::info
@@ -131,7 +136,7 @@ Firebase の `プロジェクトの設定`（Firebase 管理ページ左上に�
 
 <Example
   keyName="FIREBASE_ADMIN_SECRET"
-  value='{"private_key":"-----BEGIN PRIVATE KEY-----\n********************\n-----END PRIVATE KEY-----\n","client_email":"************.iam.gserviceaccount.com"'
+  value='{"private_key":"-----BEGIN PRIVATE KEY-----\n********************\n-----END PRIVATE KEY-----\n","client_email":"************.iam.gserviceaccount.com"}'
 />
 
 `*`の部分を適切な文字列に置き換えてください。なお、実際の`private_key`の値はこの例と比べて非常に長いです。
