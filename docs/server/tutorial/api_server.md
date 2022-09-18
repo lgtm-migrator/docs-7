@@ -11,6 +11,12 @@ sidebar_position: 3
 Heroku もしくは他の方法で設置する場合は、[こちら](/docs/server/details/api-server) をご覧ください。
 :::
 
+:::info
+fly.ioではPostgreSQLが使えるため、Heroku Postgresからfly.ioへのデータ移行もできる可能性がありますが、現時点では未検証です。この解説では、Herokuからの移行ではなくサーバーを新規に設置する方法を紹介しています。
+
+なお、PostgreSQLのデータ移行の有無にかかわらず、Firebaseで管理されているデータは保持されます。
+:::
+
 ## fly.io とは
 
 fly.io は、クラウド上にサーバーを設置できるサービスです。fly.io には永続的に使える無料枠があり、これを利用することで無料で API サーバーを設置できます。
