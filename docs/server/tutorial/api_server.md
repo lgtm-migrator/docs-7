@@ -5,13 +5,15 @@ sidebar_position: 3
 
 このページでは [fly.io](https://fly.io/) に API サーバーを設置する方法を説明します。
 
+:::info
+2022年9月ごろまで、この解説ページでは fly.io ではなく Heroku を利用する方法を紹介していましたが、[2022 年に無料枠が廃止されることが決まった](https://blog.heroku.com/next-chapter) ため、現在は代わりに fly.io を利用する方法を解説しています。
+
+Heroku もしくは他の方法で設置する場合は、[こちら](/docs/server/details/api-server) をご覧ください。
+:::
+
 ## fly.io とは
 
 fly.io は、クラウド上にサーバーを設置できるサービスです。fly.io には永続的に使える無料枠があり、これを利用することで無料で API サーバーを設置できます。
-
-かつてはこの解説ページでは fly.io ではなく Heroku を利用する方法を紹介していましたが、[2022 年に無料枠が廃止されることが決まった](https://blog.heroku.com/next-chapter) ため、現在は代わりに fly.io を利用する方法を解説しています。
-
-Heroku もしくは他の方法で設置する場合は、[こちら](/docs/server/details/api-server) をご覧ください。
 
 ## シェルについて
 
