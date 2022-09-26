@@ -9,11 +9,22 @@ import Admonition from "@theme/Admonition";
 
 export const DatabaseCaution = () => (
   <Admonition type="caution">
+    <h4>API サーバー v0.7.8 以上の場合</h4>
+    <p>
+      通常の用途の場合、これではなく<a href="#DATABASE_URL">DATABASE_URL</a>
+      を用いてデータベースを指定するのが最も手軽です。 もし<a href="#DATABASE_URL">
+        DATABASE_URL
+      </a>
+      を使わない場合は、<a href="#POSTGRESQL">POSTGRESQL</a>と
+      <a href="#MYSQL">MYSQL</a>と<a href="#SQLITE">SQLITE</a>のうち、少なくとも
+      1 つの値を設定する必要があります。
+    </p>
+    <h4>API サーバー v0.7.7 以下の場合</h4>
     <p>
       <a href="#HEROKU">HEROKU</a>をtrueにしていない場合は、
-      <a href="#POSTGRESQL">POSTGRESQL</a>と<a href="#MYSQL">MYSQL</a>と
-      <a href="#SQLITE">SQLITE</a>のうち、少なくとも 1
-      つの値を設定する必要があります。
+      <a href="#POSTGRESQL">POSTGRESQL</a>と<a href="#MYSQL">MYSQL</a>と<a href="#SQLITE">
+        SQLITE
+      </a>のうち、少なくとも 1 つの値を設定する必要があります。
     </p>
   </Admonition>
 );
@@ -30,13 +41,47 @@ API サーバーから送信される値に`Access-Control-Allow-Origin`ヘッ�
 
 `true`にすることで、データベースのマイグレーションが自動的に行われます。
 
-:::caution
-もしこれを`true`にすると、API サーバーをアップデートした後に API サーバープログラムを動かした場合にもデータベースが自動的にマイグレーションされます。もしデータベース内に消失を望まないデータがあるときは、自動マイグレーションが起こる前に念のため事前にデータベースをバックアップしておくと安全です。
+:::info
+もしこれを`true`にすると、API サーバーをアップデートした後に API サーバープログラムを動かした際にデータベースが自動的にマイグレーションされます。データベースにすでに存在するデータはほぼ全て保持されますが、もし万が一データ損失が発生すると困る場合は、事前にデータベースをバックアップしておいたほうが無難です。
 :::
 
 ### 入力例
 
 <Example keyName="AUTO_MIGRATION" value="true" />
+
+## DATABASE_URL (v0.7.8 で仕様変更) {#DATABASE_URL}
+
+:::info
+この環境変数の解説は API サーバー v0.7.8 以上を前提としています。v0.7.7 以前には対応していません。v0.7.7 以前の解説は [HEROKU](#HEROKU) をご覧ください。
+:::
+
+データベースの URL を指定できます。PostgreSQL の場合は `postgresql://`、MySQL の場合は `mysql://`、SQLite の場合は `file://` で書き始めます。
+
+[POSTGRESQL](#POSTGRESQL)、[MYSQL](#MYSQL)、[SQLITE](#SQLITE) が設定されている場合はそちらが優先されます。それらは JSON で入力しますが、`DATABASE_URL` では URL のみからなる文字列で入力しますのでご注意ください。
+
+### 入力例
+
+#### PostgreSQL
+
+<Example
+  keyName="DATABASE_URL"
+  value="postgresql://user:password@localhost:5432/dbname"
+  notRecommendedAtFlyToml
+  hideHeroku
+/>
+
+#### MySQL
+
+<Example
+  keyName="DATABASE_URL"
+  value="mysql://user:password@localhost:3306/dbname"
+  notRecommendedAtFlyToml
+  hideHeroku
+/>
+
+#### SQLite
+
+<Example keyName="DATABASE_URL" value="file://./dbname.sqlite" hideHeroku />
 
 ## EMBUPLOADER_ENABLED (省略可){#EMBUPLOADER_ENABLED}
 
@@ -107,17 +152,17 @@ API サーバー内蔵アップローダーのファイルを保存するパス�
 
 `$2b$10$ABC.defgh.igklmnopq/qwertyuiopasdfghjklzxcvbnm0123`の部分は bcrypt のハッシュ値に置き換えてください。
 
-bcrypt のハッシュ値は様々な方法で生成できます。どの方法を用いても構いません。Flocon では次の2つの方法を提供しています。
+bcrypt のハッシュ値は様々な方法で生成できます。どの方法を用いても構いません。Flocon では次の 2 つの方法を提供しています。
 
-- [https://tools.flocon.app/bcrypt](https://tools.flocon.app/bcrypt) で生成する。最も手軽ですが、このページには [npm の bcryptjs パッケージ](https://www.npmjs.com/package/bcryptjs) を使っているため、APIサーバーに使用している [bcrypt パッケージ](https://www.npmjs.com/package/bcrypt)では認識できないハッシュ値が生成される可能性があります。その場合は、日本語などを用いない、もしくはパスワードを短くすることで解決できる可能性があります。
-- [Floconのソースコード](https://github.com/flocon-trpg/servers)に付属している`bcrypt-interactive`スクリプトを利用する。`apps/api-server`ディレクトリで `yarn run bcrypt-interactive`を実行すると、bcrypt ハッシュ値生成プログラムが起動します。[bcrypt パッケージ](https://www.npmjs.com/package/bcrypt) が使われますが、事前に Node.js と yarn のインストール、`yarn install` コマンドによる数百MBのファイルのインストールをする必要があるなど、ハードルが高いのが欠点です。
+- [https://tools.flocon.app/bcrypt](https://tools.flocon.app/bcrypt) で生成する。最も手軽ですが、このページには [npm の bcryptjs パッケージ](https://www.npmjs.com/package/bcryptjs) を使っているため、API サーバーに使用している [bcrypt パッケージ](https://www.npmjs.com/package/bcrypt)では認識できないハッシュ値が生成される可能性があります。その場合は、日本語などを用いない、もしくはパスワードを短くすることで解決できる可能性があります。
+- [Flocon のソースコード](https://github.com/flocon-trpg/servers)に付属している`bcrypt-interactive`スクリプトを利用する。`apps/api-server`ディレクトリで `yarn run bcrypt-interactive`を実行すると、bcrypt ハッシュ値生成プログラムが起動します。[bcrypt パッケージ](https://www.npmjs.com/package/bcrypt) が使われますが、事前に Node.js と yarn のインストール、`yarn install` コマンドによる数百 MB のファイルのインストールをする必要があるなど、ハードルが高いのが欠点です。
 
 ## FIREBASE_ADMIN_SECRET (任意){#FIREBASE_ADMIN_SECRET}
 
 :::info
 2022 年 8 月頃までのドキュメントには、この設定は必須と書かれていましたが、確認したところ実際は必要ないことが判明しました。**この環境変数の設定の有無は現時点では Flocon の動作に影響を及ぼさないと考えられるため、設定する必要はありません。**同様に、Firebase Admin SDK の秘密鍵ファイルの生成も行う必要はありません。
 
-ただし、将来 Flocon に新機能が追加された際に、この環境変数を設定しなければその新機能を使えない、といった状況が生じる可能性はあります。そのため、現在の Flocon のソースコードにも`FIREBASE_ADMIN_SECRET`を読み取る機能は残されており、`FIREBASE_ADMIN_SECRET`の値が存在すれば Firebase Admin SDK の初期化に引き続き用いられるようになっています。
+ただし、将来 Flocon に新機能が追加された際に、この環境変数を設定しなければその新機能を使えない、といった状況が生じる可能性はあります。そのため、現在の Flocon のソースコードにも`FIREBASE_ADMIN_SECRET`を読み取る機能は残されており、`FIREBASE_ADMIN_SECRET`の値が存在すればそれが Firebase Admin SDK の初期化に引き続き用いられるようになっています。
 :::
 
 Firebase 管理ページから生成した Firebase Admin SDK の秘密鍵の値を設定できます。
@@ -159,8 +204,8 @@ API サーバー v0.7.2 の時点では、管理者には部屋一覧を表示�
 
 `true`をセットすることで、Heroku に適したモードで API サーバーが稼働します。具体的には、次のような挙動になります。
 
-- `DATABASE_URL`という環境変数がある場合、それをデータベースの URL として利用する。
-- Heroku Postgres に対応した方法でデータベースに接続される。
+- API サーバー v0.7.7 以下ならば、`DATABASE_URL`という環境変数がある場合、データベースの URL として利用されます（v0.7.8 以上ならば `HEROKU`が`true`でなくとも[DATABASE_URL](#DATABASE_URL)を使用できます）。
+- Heroku Postgres に対応した方法でデータベースに接続されます。
 
 ## MySQL (省略可)(v0.7.2 で追加){#MYSQL}
 
@@ -219,8 +264,7 @@ PostgreSQL の設定を行うことができます。
         {
           '"driverOptions":{"connection": {"ssl": {"rejectUnauthorized": false}}}'
         }
-      </code>
-      も JSON に書き加えないと正常に動作しない可能性があります。
+      </code>も JSON に書き加えないと正常に動作しない可能性があります。
     </Fragment>
   }
   notRecommendedAtFlyToml
