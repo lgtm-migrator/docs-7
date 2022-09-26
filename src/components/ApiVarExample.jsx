@@ -67,7 +67,7 @@ export const ApiVarExample = ({
         </p>
       </TabItem>
       <TabItem value="heroku" label="Heroku">
-        {!hideHeroku && (
+        {hideHeroku ? (<p>この環境変数は、Heroku に対応していないか、Heroku での設定が推奨されていません。</p>) : (
           <>
             <p>
               KEY: <code>{keyName}</code>
