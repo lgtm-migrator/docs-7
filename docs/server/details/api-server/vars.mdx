@@ -65,9 +65,11 @@ API サーバーから送信される値に`Access-Control-Allow-Origin`ヘッ�
 
 <Example
   keyName="DATABASE_URL"
-  value="postgresql://user:password@localhost:5432/dbname (なお、Heroku Postgresを用いる場合は自動的に設定されるため、手動で記述する必要はありません)"
+  value="postgresql://user:password@localhost:5432/dbname"
   notRecommendedAtFlyToml
 />
+
+なお、Heroku にデプロイしたうえで Heroku Postgres を利用する場合は自動的に値が設定されるため、手動で設定する必要はありません。
 
 #### MySQL
 
