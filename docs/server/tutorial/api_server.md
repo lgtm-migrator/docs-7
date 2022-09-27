@@ -97,7 +97,7 @@ flyctl auth login
 
 ダウンロードした zip ファイルを展開します。`Dockerfile` というただ 1 つのファイルが展開されたかと思います。管理しやすい場所に空のフォルダを作成し、そのフォルダ内に `Dockerfile` ファイルを移動します[^2]。
 
-:::info
+:::tip
 `Dockerfile`の中身は、`FROM kizahasi/flocon-api-swap256mb:v*.*.*`(`v*.*.*` の部分には API サーバーのバージョンが入ります)の 1 行だけです。ダウンロードせずに自分で作成しても構いません。
 
 `kizahasi/flocon-api-swap256mb` イメージの Dockerfile は [https://github.com/flocon-trpg/servers/blob/main/docker/api-server-swap256mb/Dockerfile](https://github.com/flocon-trpg/servers/blob/main/docker/api-server-swap256mb/Dockerfile) にあります。このリンク先にある Dockerfile を代わりに使用しても問題ありませんが、デプロイする際にビルドなどに少し時間がかかります。
@@ -193,7 +193,7 @@ processes = []
 
 ### 環境変数の設定
 
-API サーバーの設定をします。設定には環境変数を用います。fly.io では、環境変数のセットは次の 2 つの方法で行うことができ、併用することもできます。
+API サーバーの設定をします。設定には環境変数を用います。fly.io では、環境変数のセットは次の 2 つのいずれかの方法で行うことができます。併用することもできます。
 
 - `fly.toml`に記述する
 - `flyctl secrets set`コマンドを利用する
@@ -204,7 +204,7 @@ API サーバーの設定をします。設定には環境変数を用います�
 
 `fly.toml` ファイルを開きます。例えば次のようになっているかと思います。`[env]`と`[[mounts]]`の間に設定を記述していきます。
 
-:::info
+:::note
 `fly.toml` ファイルは、TOML という言語で記述します。そのため、.env ファイル(.env.local もこれに含まれます)とは文法が異なりますのでご注意ください。一例として、TOML の場合は`=`の右辺が文字列の場合は必ず`"`か`'`などで囲む必要があります。
 :::
 
@@ -249,25 +249,32 @@ FIREBASE_PROJECTID="my-firebase-project-id"
 データベースは下のようにします[^5]。
 
 ```toml
-SQLITE='{"dbName":"/data/main.sqlite3"}'
+DATABASE_URL="file:///data/main.sqlite3"
 ```
 
+:::note
+API サーバー v0.7.7 以下では、fly.io などで `DATABASE_URL` を使用できません。v0.7.8 以上を使う必要があります。 
+:::
+
 :::tip
-SQLite の代わりに PostgreSQL もしくは MySQL を使うこともできます。その場合は、`SQLITE`の設定を`fly.toml`に記述する代わりに、次のリンクを参照して`POSTGRESQL`もしくは`MYSQL`を設定してください。
-
-- [PostgreSQL](../details/api-server/vars#POSTGRESQL)
-- [MySQL](../details/api-server/vars#MYSQL)
-
-fly.io にデプロイする場合は、`SQLITE`、`POSTGRESQL`、`MYSQL`の中から 1 つだけ記述する必要があります。2 つ以上記述されていると、用いるべきデータベースが特定できないため、API サーバー起動時にエラーとなります[^6]。
+SQLite の代わりに PostgreSQL もしくは MySQL を使うこともできます。その場合は[こちら](../details/api-server/vars#DATABASE_URL) を参照して設定してください。
 :::
 
 #### ENTRY_PASSWORD
 
 [こちら](../details/api-server/vars#ENTRY_PASSWORD) を参照のうえ設定してください。
 
+#### NODE_ENV
+
+下のようにすることで、API サーバーが本番環境のモードで実行されるようになります。この設定をしなくても動きますが、デバッグ目的などでない限りは`production`をセットするほうが望ましいです。
+
+```toml
+NODE_ENV="production"
+```
+
 #### fly.toml ファイルの完成例
 
-このページにある設定を全て終えた場合、一例として、`fly.toml`の中身は次のようになります。`[env]`と`[experimental]`の間以外の部分は編集前と変わっていません。
+このページにある設定を全て終えた場合、一例として、`fly.toml`の中身は次のようになります。`[env]`と`[experimental]`の間の部分以外は編集前と変わっていません。
 
 ```txt
 # fly.toml file generated for flocon-api-tutorial-app on 2022-08-30T00:00:00+09:00
@@ -281,8 +288,9 @@ processes = []
 PORT="8080"
 AUTO_MIGRATION="true"
 FIREBASE_PROJECTID="my-firebase-project-id"
-SQLITE='{"dbName":"/data/main.sqlite3"}'
+DATABASE_URL="file:///data/main.sqlite3"
 ENTRY_PASSWORD='{"type":"none"}'
+NODE_ENV="production"
 
 [[mounts]]
   source = "my_storage"
@@ -309,7 +317,7 @@ Apps 一覧が表示されるので、デプロイした app を選択します�
 
 ![apps.png](/img/docs/flyio/apps.png)
 
-:::info
+:::note
 `Free builder`は自動的に作られるビルド用の app です。そのまま残しておいて構いません。
 :::
 
@@ -335,4 +343,3 @@ Apps 一覧が表示されるので、デプロイした app を選択します�
 [^2]: 空でないフォルダに Dockerfile を置いても構いませんが、Dockerfile のある場所に他のファイルが自動的に作成されるので、Dockerfile 以外にファイルのないフォルダが管理しやすくなります。
 [^3]: 日本からの利用者が多い場合は、物理的な距離が近い`nrt (Tokyo, Japan)`を選ぶことで通信ラグが小さくなるため、わずかですがユーザー体験の向上が期待できます。ただし、[fly.io の料金表によると、アメリカにデプロイすると日本と比べてデータ転送の無料枠が大きく料金も安くなる](https://fly.io/docs/about/pricing/#outbound-data-transfer)といったメリットがあるため、通信量が多くなると予想される場合は`sea (Seattle, Wahington (US))`などといった北米西海岸のリージョンのほうが適しているかもしれません。また、API サーバーは Firebase Authentication によってユーザーの認証を確認するため、Firebase のリージョンも少なからず影響する可能性があります。なお、API サーバーは各ブラウザと通信しますが、Web サーバーとの通信は行いません。そのため、API サーバーは Web サーバーと近い地域にデプロイする必要はありません。
 [^5]: この例では `/data/main.sqlite3` としていますが、永続ストレージ内にあり、なおかつ他のファイルと重複しない限り、他のパスを指定しても構いません。
-[^6]: ただし、`yarn run start`の際に`db`パラメーターを用いてデータベースを指定することでこのエラーは回避できます。
