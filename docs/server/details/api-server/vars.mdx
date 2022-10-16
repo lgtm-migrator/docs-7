@@ -8,7 +8,7 @@ import { ApiVarExample as Example } from "@site/src/components/ApiVarExample";
 import Admonition from "@theme/Admonition";
 
 export const DatabaseCaution = () => (
-  <Admonition type="caution">
+  <Admonition type="info">
     <h4>API サーバー v0.7.8 以上の場合</h4>
     <p>
       通常の用途の場合、これではなく<a href="#DATABASE_URL">DATABASE_URL</a>
@@ -156,12 +156,12 @@ API サーバー内蔵アップローダーのファイルを保存するパス�
 bcrypt のハッシュ値は様々な方法で生成できます。どの方法を用いても構いません。Flocon では次の 2 つの方法を提供しています。
 
 - [https://tools.flocon.app/bcrypt](https://tools.flocon.app/bcrypt) で生成する。最も手軽ですが、このページには [npm の bcryptjs パッケージ](https://www.npmjs.com/package/bcryptjs) を使っているため、API サーバーに使用している [bcrypt パッケージ](https://www.npmjs.com/package/bcrypt)では認識できないハッシュ値が生成される可能性があります。その場合は、日本語などを用いない、もしくはパスワードを短くすることで解決できる可能性があります。
-- [Flocon のソースコード](https://github.com/flocon-trpg/servers)に付属している`bcrypt-interactive`スクリプトを利用する。`apps/api-server`ディレクトリで `yarn run bcrypt-interactive`を実行すると、bcrypt ハッシュ値生成プログラムが起動します。[bcrypt パッケージ](https://www.npmjs.com/package/bcrypt) が使われますが、事前に Node.js と yarn のインストール、`yarn install` コマンドによる数百 MB のファイルのインストールをする必要があるなど、ハードルが高いのが欠点です。
+- [Flocon のソースコード](https://github.com/flocon-trpg/servers)に付属している`bcrypt-interactive`スクリプトを利用する。`apps/api-server`ディレクトリで `yarn run bcrypt-interactive`を実行すると、bcrypt ハッシュ値生成プログラムが起動します。[bcrypt パッケージ](https://www.npmjs.com/package/bcrypt) が使われますが、事前に Node.js と yarn のインストールおよび、`yarn install` コマンドを実行して数百 MB のファイルをダウンロードする必要があります。
 
 ## FIREBASE_ADMIN_SECRET (任意){#FIREBASE_ADMIN_SECRET}
 
 :::info
-2022 年 8 月頃までのドキュメントには、この設定は必須と書かれていましたが、確認したところ実際は必要ないことが判明しました。**この環境変数の設定の有無は現時点では Flocon の動作に影響を及ぼさないと考えられるため、設定する必要はありません。**同様に、Firebase Admin SDK の秘密鍵ファイルの生成も行う必要はありません。
+2022 年 8 月頃までこの設定は必須と書かれていましたが、確認したところ実際は必要ないことが判明しました。よって、**`FIREBASE_ADMIN_SECRET` の設定の有無は現時点では Flocon の動作に影響を及ぼさないと考えられるため、設定する必要はありません。**すでに `FIREBASE_ADMIN_SECRET` に値をセットしている場合は、値を削除しても構いません。同様に、Firebase Admin SDK の秘密鍵ファイルの生成も行う必要はありません。
 
 ただし、将来 Flocon に新機能が追加された際に、この環境変数を設定しなければその新機能を使えない、といった状況が生じる可能性はあります。そのため、現在の Flocon のソースコードにも`FIREBASE_ADMIN_SECRET`を読み取る機能は残されており、`FIREBASE_ADMIN_SECRET`の値が存在すればそれが Firebase Admin SDK の初期化に引き続き用いられるようになっています。
 :::
@@ -203,10 +203,38 @@ API サーバー v0.7.2 の時点では、管理者には部屋一覧を表示�
 
 ## HEROKU (省略可) {#HEROKU}
 
-`true`をセットすることで、Heroku に適したモードで API サーバーが稼働します。具体的には、次のような挙動になります。
+`true` をセットすることで、Heroku に適したモードで API サーバーが稼働します。具体的には、次のような挙動になります。
 
 - API サーバー v0.7.7 以下ならば、`DATABASE_URL`という環境変数がある場合、データベースの URL として利用されます（v0.7.8 以上ならば `HEROKU`が`true`でなくとも[DATABASE_URL](#DATABASE_URL)を使用できます）。
 - Heroku Postgres に対応した方法でデータベースに接続されます。
+
+## LOG_FORMAT (省略可) (v0.7.10 で追加){#LOG_FORMAT}
+
+`default` をセットすると、シンプルな形式でログが出力されます。値がセットされていない場合は `default` がセットされたときと同じ動作をします。
+
+`json` もしくは `pino` をセットすることで、代わりに [pino](https://www.npmjs.com/package/pino) の JSON の形式でログが出力されます。また、API 実行に関わるログが出力されるようにもなります。API 実行に関わるログは大量に出力されますのでご注意ください。`json` と `pino` はどちらも同じ動作をします。
+
+:::tip
+JSON 形式のログは、[pino-pretty](https://www.npmjs.com/package/pino-pretty) を使うことで人が読みやすい形に変換できます。使い方は、まず `npm install -g pino-pretty` でインストールしてから、`yarn run start | pino-pretty` などのように組み合わせます[^1]。pino のモジュールには pino-pretty 以外にも様々なものが存在します。
+:::
+
+### 入力例
+
+<Example keyName="LOG_FORMAT" value="json" />
+
+## LOG_LEVEL (省略可) (v0.7.10 で追加){#LOG_LEVEL}
+
+出力するログのレベルを設定します。`fatal`、`error`、`warn`、`info`、`debug`、`trace`、`silent` のいずれかの値をセットできます。値がセットされていない場合は `info` がセットされたときと同じ動作をします。
+
+`silent` の場合、一切のログ出力を行いません。`silent` 以外の場合は、セットされたレベル以上のログのみを出力します。例えば `warn` をセットした場合、`fatal`、`warn`、`info` のレベルのログのみが出力されます。
+
+:::note
+API 実行に関わるログは、`LOG_LEVEL` の値に関わらず、[`LOG_FORMAT`](#LOG_FORMAT) を `json` などにしない限り出力されません。
+:::
+
+### 入力例
+
+<Example keyName="LOG_LEVEL" value="warn" />
 
 ## MySQL (省略可)(v0.7.2 で追加){#MYSQL}
 
@@ -298,3 +326,5 @@ SQLite の設定を行うことができます。
 ### 入力例
 
 <Example keyName="SQLITE" value='{"dbName":"./flocon-api.sqlite3"}' />
+
+[^1]: 代わりに `yarn dlx` などを用いても構いません。
